@@ -41,9 +41,9 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ItemView
     }
 
 
-    //  public RecycleAdapter(List<Place> recycleList) {
-    //        mRecyclerList = recycleList;
-    //    }
+      public RecycleAdapter() {
+            mRecyclerList = new ArrayList<>();
+        }
 
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
