@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".places.RecyclerViewActivity">
+    tools:context=".places.PlaceListActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/recycler_addButton"
@@ -20,14 +20,14 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/recycler_searchTask"
+            android:id="@+id/placeList_searchTask"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="6dp" />
 
         <androidx.recyclerview.widget.RecyclerView
 
-            android:id="@+id/recycler_recyclerView"
+            android:id="@+id/placeList_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#e0e0e0"

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.urbexexploration.databinding.ActivityMainBinding;
-import com.example.urbexexploration.places.RecyclerViewActivity;
+import com.example.urbexexploration.places.PlaceListActivity;
 import com.example.urbexexploration.about.AboutActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToRecyclerActivity(View view) {
-        Intent intent = new Intent(this, RecyclerViewActivity.class);
+        Intent intent = new Intent(this, PlaceListActivity.class);
         startActivity(intent);
     }
 
