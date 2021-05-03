@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/mainLayout"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical"
         tools:context=".main.MainActivity">
@@ -17,13 +17,14 @@
         <RelativeLayout
             android:id="@+id/mainTitleLayout"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="0dp"
+            android:layout_weight="2"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/main_title_ImageView"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="match_parent"
                 android:alpha=".5"
                 android:scaleType="centerCrop"
                 android:soundEffectsEnabled="true"
@@ -33,7 +34,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:layout_centerInParent="true"
                 android:orientation="vertical">
 
@@ -41,10 +41,8 @@
                     android:id="@+id/main_title_TextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="false"
-                    android:layout_centerInParent="true"
                     android:fontFamily="sans-serif-medium"
-                    android:gravity="center"
+                    android:layout_gravity="center"
                     android:text="#FORGOTTEN"
                     android:textColor="@color/black"
                     android:textSize="56sp" />
@@ -356,5 +354,5 @@
         </LinearLayout>
 
     </LinearLayout>
-</ScrollView>
+</LinearLayout>
 
