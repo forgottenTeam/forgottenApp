@@ -14,9 +14,14 @@ import com.example.urbexexploration.data.Place;
 import com.example.urbexexploration.databinding.RecyclerCardBinding;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ItemViewHolder> {
-    private ArrayList<CardItem> mRecyclerList;
+    private List<Place> mRecyclerList;
+
+    public List<Place> getList() {
+        return mRecyclerList;
+    }
 
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
@@ -36,9 +41,9 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ItemView
     }
 
 
-    public RecycleAdapter(ArrayList<CardItem> recycleList) {
-        mRecyclerList = recycleList;
-    }
+    //  public RecycleAdapter(List<Place> recycleList) {
+    //        mRecyclerList = recycleList;
+    //    }
 
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -55,8 +60,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ItemView
 
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-        CardItem currentItem = mRecyclerList.get(position);
-        holder.bind(new Place());
+        holder.bind(mRecyclerList.get(position));
     }
 
     @Override
@@ -64,8 +68,8 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ItemView
         return mRecyclerList.size();
     }
 
-    public void filterList(ArrayList<CardItem> filteredList) {
-        mRecyclerList = filteredList;
+    public void submitList(List<Place> list) {
+        mRecyclerList = list;
         notifyDataSetChanged();
     }
 
