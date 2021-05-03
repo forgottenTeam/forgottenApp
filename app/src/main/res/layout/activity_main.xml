@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".main.MainActivity">
+
+        <RelativeLayout
+            android:id="@+id/mainTitleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/main_title_ImageView"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:alpha=".5"
+                android:scaleType="centerCrop"
+                android:soundEffectsEnabled="true"
+                android:visibility="visible"
+                app:srcCompat="@drawable/logo1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/main_title_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="false"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:text="#FORGOTTEN"
+                    android:textColor="@color/black"
+                    android:textSize="56sp" />
+
+                <TextView
+                    android:id="@+id/main_title2_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:gravity="center"
+                    android:text="urbex guide"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/mainSearchLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <SearchView
+                android:id="@+id/main_searchTask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:iconifiedByDefault="false"
+                android:queryHint="What do You want to see?" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mainButton1Layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".8"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/roundcorner2"
+                app:cardCornerRadius="25dp"
+                app:cardUseCompatPadding="false"
+                app:contentPadding="10dp">
+
+                <ImageView
+                    android:id="@+id/main_buttonDomy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:onClick="goToRecyclerActivity"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/domy" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/roundcorner2"
+                app:cardCornerRadius="25dp"
+                app:cardUseCompatPadding="false"
+                app:contentPadding="10dp">
+
+                <ImageView
+                    android:id="@+id/main_buttonMilitaria"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/militaria" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/roundcorner2"
+                app:cardCornerRadius="25dp"
+                app:cardUseCompatPadding="false"
+
+                app:contentPadding="10dp">
+
+                <ImageView
+                    android:id="@+id/main_buttonZamki"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:scaleType="fitXY"
+                    android:soundEffectsEnabled="true"
+                    app:srcCompat="@drawable/zamki" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mainButton2Layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".8"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/roundcorner2"
+                app:cardCornerRadius="25dp"
+                app:cardUseCompatPadding="false"
+                app:contentPaddingLeft="10dp"
+                app:contentPaddingRight="10dp">
+
+                <ImageView
+                    android:id="@+id/main_buttonPrzemyslowe"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:scaleType="fitXY"
+                    android:soundEffectsEnabled="true"
+                    app:srcCompat="@drawable/przemyslowe" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+
+                android:layout_margin="16dp"
+                android:background="@drawable/roundcorner2"
+                app:cardCornerRadius="25dp"
+                app:cardUseCompatPadding="false"
+                app:contentPaddingLeft="10dp"
+                app:contentPaddingRight="10dp">
+
+                <ImageView
+                    android:id="@+id/main_buttonKolejowe"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:scaleType="fitXY"
+                    android:soundEffectsEnabled="true"
+                    app:srcCompat="@drawable/kolejowe" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+
+                android:layout_margin="16dp"
+                android:background="@drawable/roundcorner2"
+                app:cardCornerRadius="25dp"
+                app:cardUseCompatPadding="false"
+                app:contentPaddingLeft="10dp"
+                app:contentPaddingRight="10dp">
+
+                <ImageView
+                    android:id="@+id/main_buttonUslugowe"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:scaleType="fitXY"
+                    android:soundEffectsEnabled="true"
+                    app:srcCompat="@drawable/uslugowe" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mainButton3Layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".8"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/roundcorner2"
+                app:cardCornerRadius="25dp"
+                app:cardUseCompatPadding="false"
+                app:contentPadding="10dp">
+
+                <ImageView
+                    android:id="@+id/main_buttonInfrastrukturalne"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:scaleType="fitXY"
+                    android:soundEffectsEnabled="true"
+                    app:srcCompat="@drawable/infrastrukturalne" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/roundcorner2"
+                app:cardCornerRadius="25dp"
+                app:cardUseCompatPadding="false"
+                app:contentPadding="10dp">
+
+                <ImageView
+                    android:id="@+id/main_buttonKoscioly"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:scaleType="fitXY"
+                    android:soundEffectsEnabled="true"
+                    app:srcCompat="@drawable/kosciol" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/roundcorner2"
+                app:cardCornerRadius="25dp"
+                app:cardUseCompatPadding="false"
+                app:contentPadding="10dp">
+
+                <ImageView
+                    android:id="@+id/main_buttonInne"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:scaleType="fitXY"
+                    android:soundEffectsEnabled="true"
+                    app:srcCompat="@drawable/inne" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mainBottomLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/main_buttonSearch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                app:srcCompat="@android:drawable/ic_menu_search" />
+
+            <ImageButton
+                android:id="@+id/main_buttonList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                app:srcCompat="@android:drawable/ic_menu_agenda" />
+
+            <ImageButton
+                android:id="@+id/main_buttonAbout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                android:onClick="goToInfoActivity"
+                app:srcCompat="@android:drawable/ic_menu_info_details" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
+
