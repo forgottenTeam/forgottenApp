@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -27,18 +28,31 @@ public class PlaceListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String category = getIntent().getStringExtra("EXTRA_CATEGORY");
         binding = ActivityPlaceListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         createRecyclerView();
 
         placeListViewModel = new ViewModelProvider(this).get(PlaceListViewModel.class);
+
         placeListViewModel.getPlacesLiveData().observe(this, placeList -> {
-            mAdapter.submitList(placeList);
+
+           mAdapter.submitList(placeList);
+
+            if (category!=null){
+                placeListViewModel.filterListCategory(category);
+            } else {
+                Toast.makeText(PlaceListActivity.this,"nie maaaaaaaaaaaaaaaaa",Toast.LENGTH_LONG).show();
+            }
         });
 
         placeListViewModel.getFilteredPlacesLiveData().observe(this, placeList -> {
             mAdapter.submitList(placeList);
         });
+
+
+
+
 
         binding.placeListSearchTask.addTextChangedListener(new TextWatcher() {
             @Override
@@ -56,6 +70,8 @@ public class PlaceListActivity extends AppCompatActivity {
                 placeListViewModel.filter(s.toString());
             }
         });
+
+
     }
 
     public void createRecyclerView() {

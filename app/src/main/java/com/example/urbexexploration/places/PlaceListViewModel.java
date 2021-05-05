@@ -28,7 +28,7 @@ public class PlaceListViewModel extends ViewModel {
         return filteredPlacesLiveData;
     }
 
-    public void filterList(String category) {
+    public void filterListCategory(String category) {
         List<Place> list = repository.getPlacesLiveData().getValue();
         if (list != null) {
             List<Place> listCategory = new ArrayList<>();
