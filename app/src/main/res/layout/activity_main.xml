@@ -98,7 +98,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:clickable="true"
-                    android:onClick="goToRecyclerActivity"
+                    android:onClick="goToPlaceActivity"
                     android:scaleType="fitXY"
                     android:src="@drawable/domy" />
 

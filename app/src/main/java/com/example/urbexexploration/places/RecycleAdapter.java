@@ -35,7 +35,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ItemView
         public void bind(Place place) {
             binding.cardImageView.setImageResource(R.drawable.domy);
             binding.cardCategoryTextView.setText(place.getCategory());
-            binding.cardLocalisationTextView.setText(place.getLocalization());
+            binding.cardLocalisationTextView.setText(place.getProvince());
             binding.cardNameTextView.setText(place.getName());
         }
     }

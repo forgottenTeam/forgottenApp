@@ -5,8 +5,9 @@ import java.util.List;
 public class Place {
     private String name;
     private String category;
-    private String localization;
+    private String city;
     private String description;
+    private String province;
     private double latitude;
     private double longitude;
     private List<String> images;
@@ -27,17 +28,21 @@ public class Place {
         this.category = category;
     }
 
-    public String getLocalization() {
-        return localization;
+    public String getCity() {
+        return city;
     }
 
-    public void setLocalization(String city) {
-        this.localization = city;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getDescription() {
         return description;
     }
+
+    public String getProvince() { return province; }
+
+    public void setProvince(String province) { this.province = province; }
 
     public void setDescription(String description) {
         this.description = description;

@@ -12,10 +12,10 @@ import java.util.List;
 
 public class PlaceListViewModel extends ViewModel {
     private PlacesRepository repository;
-    private MutableLiveData<List<Place>> filteredDataList;
+    private MutableLiveData<List<Place>> filteredPlacesLiveData;
 
-
-    public PlaceListViewModel () {
+    public PlaceListViewModel() {
+        filteredPlacesLiveData = new MutableLiveData<>();
         repository = new PlacesRepository();
         repository.queryPlaces();
     }
@@ -24,7 +24,11 @@ public class PlaceListViewModel extends ViewModel {
         return repository.getPlacesLiveData();
     }
 
-    public void filterList (String category) {
+    public LiveData<List<Place>> getFilteredPlacesLiveData() {
+        return filteredPlacesLiveData;
+    }
+
+    public void filterList(String category) {
         List<Place> list = repository.getPlacesLiveData().getValue();
         if (list != null) {
             List<Place> listCategory = new ArrayList<>();
@@ -33,7 +37,26 @@ public class PlaceListViewModel extends ViewModel {
                     listCategory.add(p);
                 }
             }
-            filteredDataList.setValue(listCategory);
+            filteredPlacesLiveData.setValue(listCategory);
         }
     }
+
+    public void filter(String txt) {
+        List<Place> filteredList = new ArrayList<>();
+        List<Place> list = repository.getPlacesLiveData().getValue();
+        if (list != null) {
+            if (txt == null || txt.isEmpty()) {
+                filteredPlacesLiveData.setValue(list);
+            } else {
+                for (Place item : list) {
+                    if (item.getName().toLowerCase().contains(txt.toLowerCase())) {
+                        filteredList.add(item);
+                    }
+                }
+                filteredPlacesLiveData.setValue(filteredList);
+            }
+        }
+    }
+
+
 }

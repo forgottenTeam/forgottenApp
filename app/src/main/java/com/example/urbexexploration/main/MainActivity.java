@@ -19,15 +19,15 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.mainButtonDomy.setOnClickListener(v -> goToRecyclerActivity(v));
-        binding.mainButtonMilitaria.setOnClickListener(v -> goToRecyclerActivity(v));
-        binding.mainButtonZamki.setOnClickListener(v -> goToRecyclerActivity(v));
-        binding.mainButtonPrzemyslowe.setOnClickListener(v -> goToRecyclerActivity(v));
-        binding.mainButtonKolejowe.setOnClickListener(v -> goToRecyclerActivity(v));
-        binding.mainButtonUslugowe.setOnClickListener(v -> goToRecyclerActivity(v));
-        binding.mainButtonInfrastrukturalne.setOnClickListener(v -> goToRecyclerActivity(v));
-        binding.mainButtonKoscioly.setOnClickListener(v -> goToRecyclerActivity(v));
-        binding.mainButtonInne.setOnClickListener(v -> goToRecyclerActivity(v));
+        binding.mainButtonDomy.setOnClickListener(v -> goToPlaceActivity(v));
+        binding.mainButtonMilitaria.setOnClickListener(v -> goToPlaceActivity(v));
+        binding.mainButtonZamki.setOnClickListener(v -> goToPlaceActivity(v));
+        binding.mainButtonPrzemyslowe.setOnClickListener(v -> goToPlaceActivity(v));
+        binding.mainButtonKolejowe.setOnClickListener(v -> goToPlaceActivity(v));
+        binding.mainButtonUslugowe.setOnClickListener(v -> goToPlaceActivity(v));
+        binding.mainButtonInfrastrukturalne.setOnClickListener(v -> goToPlaceActivity(v));
+        binding.mainButtonKoscioly.setOnClickListener(v -> goToPlaceActivity(v));
+        binding.mainButtonInne.setOnClickListener(v -> goToPlaceActivity(v));
 
         binding.mainButtonAbout.setOnClickListener(v -> goToAboutActivity(v));
     }
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToRecyclerActivity(View view) {
+    public void goToPlaceActivity(View view) {
         Intent intent = new Intent(this, PlaceListActivity.class);
         startActivity(intent);
     }

@@ -36,6 +36,9 @@ public class PlaceListActivity extends AppCompatActivity {
             mAdapter.submitList(placeList);
         });
 
+        placeListViewModel.getFilteredPlacesLiveData().observe(this, placeList -> {
+            mAdapter.submitList(placeList);
+        });
 
         binding.placeListSearchTask.addTextChangedListener(new TextWatcher() {
             @Override
@@ -50,22 +53,9 @@ public class PlaceListActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                filter(s.toString());
+                placeListViewModel.filter(s.toString());
             }
         });
-
-    }
-
-    public void filter(String txt) {
-        List<Place> filteredList = new ArrayList<>();
-
-        for (Place item : mAdapter.getList()) {
-            if (item.getName().toLowerCase().contains(txt.toLowerCase())) {
-                filteredList.add(item);
-            }
-        }
-
-        mAdapter.submitList(filteredList);
     }
 
     public void createRecyclerView() {
