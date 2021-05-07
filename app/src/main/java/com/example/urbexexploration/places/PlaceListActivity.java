@@ -26,6 +26,13 @@ public class PlaceListActivity extends AppCompatActivity {
     private ActivityPlaceListBinding binding;
     private PlaceListViewModel placeListViewModel;
 
+    private OnPlaceClickListener placeListener = new OnPlaceClickListener() {
+        @Override
+        public void onPlaceClick(int id) {
+            onClickToOnePlaceActivity(id);
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,17 +87,17 @@ public class PlaceListActivity extends AppCompatActivity {
         binding.placeListRecyclerView.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new RecycleAdapter();
+        mAdapter = new RecycleAdapter(placeListener);
 
         binding.placeListRecyclerView.setLayoutManager(mLayoutManager);
         binding.placeListRecyclerView.setAdapter(mAdapter);
     }
 
-//    public void onClickToOnePlaceActivity(View v, String name) {   // uzyto on Click w designie na imageView w ITEM
-//        Intent intent = new Intent(this, OnePlaceActivity.class);
-//        intent.putExtra("EXTRA_PLACE", name);
-//        startActivity(intent);
-//    }
+    public void onClickToOnePlaceActivity(int id) {
+        Intent intent = new Intent(this, OnePlaceActivity.class);
+        intent.putExtra("EXTRA_ID", id);
+        startActivity(intent);
+    }
 
     public void onClickToAddButtonActivity(View v) {
         Intent intent = new Intent(this, AddPlace.class);

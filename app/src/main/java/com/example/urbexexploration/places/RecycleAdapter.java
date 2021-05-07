@@ -1,50 +1,25 @@
 package com.example.urbexexploration.places;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.urbexexploration.R;
 import com.example.urbexexploration.data.Place;
 import com.example.urbexexploration.databinding.RecyclerCardBinding;
-import com.example.urbexexploration.onePlace.OnePlaceActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ItemViewHolder> {
+public class RecycleAdapter extends RecyclerView.Adapter<ItemViewHolder> {
     private List<Place> mRecyclerList;
+    private OnPlaceClickListener placeListener;
 
-    public List<Place> getList() {
-        return mRecyclerList;
+    public RecycleAdapter(OnPlaceClickListener placeListener) {
+        this.placeListener = placeListener;
+        mRecyclerList = new ArrayList<>();
     }
-
-
-    public static class ItemViewHolder extends RecyclerView.ViewHolder {
-        private RecyclerCardBinding binding;
-
-        public ItemViewHolder(@NonNull RecyclerCardBinding binding) {
-            super(binding.getRoot());
-            this.binding = binding;
-        }
-
-        public void bind(Place place) {
-            binding.cardImageView.setImageResource(R.drawable.domy);
-            binding.cardCategoryTextView.setText(place.getCategory());
-            binding.cardLocalisationTextView.setText(place.getProvince());
-            binding.cardNameTextView.setText(place.getName());
-        }
-    }
-
-      public RecycleAdapter() {
-            mRecyclerList = new ArrayList<>();
-        }
 
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -55,7 +30,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ItemView
                         parent,
                         false
                 );
-        ItemViewHolder ivh = new ItemViewHolder(recyclerCardBinding);
+        ItemViewHolder ivh = new ItemViewHolder(recyclerCardBinding, placeListener);
         return ivh;
     }
 
