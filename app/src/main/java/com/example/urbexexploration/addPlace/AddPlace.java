@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
+import com.example.urbexexploration.R;
 import com.example.urbexexploration.databinding.ActivityAddBinding;
 
 public class AddPlace extends AppCompatActivity {
@@ -17,19 +20,15 @@ public class AddPlace extends AppCompatActivity {
          binding = ActivityAddBinding.inflate(getLayoutInflater());
          setContentView(binding.getRoot());
 
-        // Get input text
-//        String input1 = binding.addNameInputText.getText().toString();
-//        binding.addNameInputText.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+        ArrayAdapter<String> chooseCategory = new ArrayAdapter<String>(AddPlace.this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.category));
+        chooseCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.categoryTextView.setAdapter(chooseCategory);
 
-       // val inputText = outlinedTextField.editText?.text.toString()
+        ArrayAdapter<String> chooseProvince = new ArrayAdapter<String>(AddPlace.this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.province));
+        chooseCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.addProvinceInputText.setAdapter(chooseProvince);
 
-//        outlinedTextField.editText?.doOnTextChanged { inputText, _, _, _ ->
-//            // Respond to input text change
+
         }
 
     }

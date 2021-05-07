@@ -9,4 +9,36 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string-array name="category">
+        <item>Mieszkalne</item>
+        <item>Militarne</item>
+        <item>Zamki</item>
+        <item>Przemysłowe</item>
+        <item>Kolejowe</item>
+        <item>Usługowe</item>
+        <item>Infrastrukturalne</item>
+        <item>Sakralne</item>
+        <item>Inne</item>
+    </string-array>
+
+    <string-array name="province">
+        <item>Dolnośląskie</item>
+        <item>Kujawsko-pomorskie</item>
+        <item>Lubelskie</item>
+        <item>Lubuskie</item>
+        <item>Łódzkie</item>
+        <item>Małopolskie</item>
+        <item>Mazowieckie</item>
+        <item>Opolskie</item>
+        <item>Podkarpackie</item>
+        <item>Podlaskie</item>
+        <item>Pomorskie</item>
+        <item>Śląskie</item>
+        <item>Świętokrzyskie</item>
+        <item>Warmińsko-mazurskie</item>
+        <item>Wielkopolskie</item>
+        <item>Zachodniopomorskie</item>
+    </string-array>
+
 </resources>

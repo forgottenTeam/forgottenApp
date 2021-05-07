@@ -42,20 +42,22 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/category_outlinedTextField"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:hint="Kategoria"
             app:layout_constraintTop_toBottomOf="@id/name_outlinedTextField">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/add_category_inputText"
+            <AutoCompleteTextView
+                android:id="@+id/category_textView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                app:layout_constraintTop_toBottomOf="@id/name_outlinedTextField"/>
 
         </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/city_outlinedTextField"
@@ -76,7 +78,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/province_outlinedTextField"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,10 +86,11 @@
             android:hint="Województwo"
             app:layout_constraintTop_toBottomOf="@id/city_outlinedTextField">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <AutoCompleteTextView
                 android:id="@+id/add_province_inputText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="none"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -186,13 +189,27 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/recycler_addButton"
+            android:id="@+id/add_photoButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/description_outlinedTextField"
             android:layout_margin="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/ic_baseline_add_a_photo_24"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/save_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/description_outlinedTextField"
+            app:srcCompat="@drawable/ic_baseline_save_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
