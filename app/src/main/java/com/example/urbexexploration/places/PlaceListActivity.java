@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.urbexexploration.addPlace.AddPlace;
 import com.example.urbexexploration.data.Place;
 import com.example.urbexexploration.databinding.ActivityPlaceListBinding;
 import com.example.urbexexploration.onePlace.OnePlaceActivity;
@@ -33,17 +34,20 @@ public class PlaceListActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         createRecyclerView();
 
+        binding.recyclerAddButton.setOnClickListener(v -> onClickToAddButtonActivity(v));
+
         placeListViewModel = new ViewModelProvider(this).get(PlaceListViewModel.class);
 
         placeListViewModel.getPlacesLiveData().observe(this, placeList -> {
 
            mAdapter.submitList(placeList);
 
-            if (category!=null){
+            if (category!=null) {
                 placeListViewModel.filterListCategory(category);
-            } else {
-                Toast.makeText(PlaceListActivity.this,"nie maaaaaaaaaaaaaaaaa",Toast.LENGTH_LONG).show();
             }
+//            } else {
+//                Toast.makeText(PlaceListActivity.this,"nie maaaaaaaaaaaaaaaaa",Toast.LENGTH_LONG).show();
+//            }
         });
 
         placeListViewModel.getFilteredPlacesLiveData().observe(this, placeList -> {
@@ -86,6 +90,11 @@ public class PlaceListActivity extends AppCompatActivity {
 
     public void onClickToOnePlaceActivity(View v) {   // uzyto on Click w designie na imageView w ITEM
         Intent intent = new Intent(this, OnePlaceActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickToAddButtonActivity(View v) {
+        Intent intent = new Intent(this, AddPlace.class);
         startActivity(intent);
     }
 }
