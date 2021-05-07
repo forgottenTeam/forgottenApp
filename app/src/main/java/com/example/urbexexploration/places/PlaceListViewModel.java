@@ -41,6 +41,19 @@ public class PlaceListViewModel extends ViewModel {
         }
     }
 
+    public void filterListProvince(String province) {
+        List<Place> list = repository.getPlacesLiveData().getValue();
+        if (list != null) {
+            List<Place> listProvince = new ArrayList<>();
+            for (Place p : list) {
+                if (p.getProvince().equalsIgnoreCase(province)) {
+                    listProvince.add(p);
+                }
+            }
+            filteredPlacesLiveData.setValue(listProvince);
+        }
+    }
+
     public void filter(String txt) {
         List<Place> filteredList = new ArrayList<>();
         List<Place> list = repository.getPlacesLiveData().getValue();
