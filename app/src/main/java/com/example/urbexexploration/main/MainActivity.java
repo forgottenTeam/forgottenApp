@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         binding.mainButtonKoscioly.setOnClickListener(v -> goToPlaceActivity(v, "Sakralne"));
         binding.mainButtonInne.setOnClickListener(v -> goToPlaceActivity(v, "Inne"));
         binding.mainButtonAbout.setOnClickListener(v -> goToAboutActivity(v));
+        binding.mainButtonList.setOnClickListener(v -> goToPlaceActivity(v, null));
     }
 
     public void goToAboutActivity(View view) {
@@ -39,9 +40,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToPlaceActivity(View view, String category) {
-//        Intent intent = new Intent(this, PlaceListActivity.class);
-//        startActivity(intent);
-
         Intent intent = new Intent(this, PlaceListActivity.class);
         intent.putExtra("EXTRA_CATEGORY", category);
         startActivity(intent);

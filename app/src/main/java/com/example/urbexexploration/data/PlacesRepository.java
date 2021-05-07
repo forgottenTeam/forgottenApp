@@ -26,7 +26,7 @@ public class PlacesRepository {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.27:8080/")
+                .baseUrl("http://192.168.1.19:8080/")
                 .client(client)
                 .addConverterFactory(MoshiConverterFactory.create())
                 .build();
