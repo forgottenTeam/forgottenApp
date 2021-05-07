@@ -10,6 +10,7 @@ import com.example.urbexexploration.data.Place;
 import com.example.urbexexploration.databinding.ActivityMainBinding;
 import com.example.urbexexploration.places.PlaceListActivity;
 import com.example.urbexexploration.about.AboutActivity;
+import com.example.urbexexploration.search.SearchActivity;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         binding.mainButtonInne.setOnClickListener(v -> goToPlaceActivity(v, "Inne"));
         binding.mainButtonAbout.setOnClickListener(v -> goToAboutActivity(v));
         binding.mainButtonList.setOnClickListener(v -> goToPlaceActivity(v, null));
+        binding.mainButtonSearch.setOnClickListener(v -> goToSearchActivity(v));
+
     }
 
     public void goToAboutActivity(View view) {
@@ -42,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
     public void goToPlaceActivity(View view, String category) {
         Intent intent = new Intent(this, PlaceListActivity.class);
         intent.putExtra("EXTRA_CATEGORY", category);
+        startActivity(intent);
+    }
+
+    public void goToSearchActivity(View view) {
+        Intent intent = new Intent(this, SearchActivity.class);
         startActivity(intent);
     }
 

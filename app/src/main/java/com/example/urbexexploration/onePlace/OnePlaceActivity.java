@@ -18,8 +18,11 @@ public class OnePlaceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityOnePlaceBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+ //       String name = getIntent().getStringExtra("EXTRA_CATEGORY");
+
         binding.onePlaceOpisTextView.setText("dasdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadaskdsadnsakndjksandjsnadkjnsajkdnsjadnsajdnsakndjksandjknsajkndsjakndjksandjksandjksandjksnajdksnajkdnsajkndsjakndjsakndjksandjkasd");
         binding.onePlaceImageView1.setImageResource(R.drawable.domy);
+
         binding.onePlaceImageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

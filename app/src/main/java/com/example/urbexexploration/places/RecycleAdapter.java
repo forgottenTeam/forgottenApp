@@ -1,5 +1,6 @@
 package com.example.urbexexploration.places;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.urbexexploration.R;
 import com.example.urbexexploration.data.Place;
 import com.example.urbexexploration.databinding.RecyclerCardBinding;
+import com.example.urbexexploration.onePlace.OnePlaceActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +41,6 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ItemView
             binding.cardNameTextView.setText(place.getName());
         }
     }
-
 
       public RecycleAdapter() {
             mRecyclerList = new ArrayList<>();

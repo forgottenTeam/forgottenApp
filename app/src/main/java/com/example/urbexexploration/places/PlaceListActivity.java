@@ -30,6 +30,7 @@ public class PlaceListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String category = getIntent().getStringExtra("EXTRA_CATEGORY");
+        String province = getIntent().getStringExtra("EXTRA_PROVINCE");
         binding = ActivityPlaceListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         createRecyclerView();
@@ -40,22 +41,19 @@ public class PlaceListActivity extends AppCompatActivity {
 
         placeListViewModel.getPlacesLiveData().observe(this, placeList -> {
 
-           mAdapter.submitList(placeList);
+            mAdapter.submitList(placeList);
 
-            if (category!=null) {
+            if (category != null) {
                 placeListViewModel.filterListCategory(category);
+            } else if
+            (province != null)  {
+                placeListViewModel.filterListProvince(province);
             }
-//            } else {
-//                Toast.makeText(PlaceListActivity.this,"nie maaaaaaaaaaaaaaaaa",Toast.LENGTH_LONG).show();
-//            }
         });
 
         placeListViewModel.getFilteredPlacesLiveData().observe(this, placeList -> {
             mAdapter.submitList(placeList);
         });
-
-
-
 
 
         binding.placeListSearchTask.addTextChangedListener(new TextWatcher() {
@@ -88,10 +86,11 @@ public class PlaceListActivity extends AppCompatActivity {
         binding.placeListRecyclerView.setAdapter(mAdapter);
     }
 
-    public void onClickToOnePlaceActivity(View v) {   // uzyto on Click w designie na imageView w ITEM
-        Intent intent = new Intent(this, OnePlaceActivity.class);
-        startActivity(intent);
-    }
+//    public void onClickToOnePlaceActivity(View v, String name) {   // uzyto on Click w designie na imageView w ITEM
+//        Intent intent = new Intent(this, OnePlaceActivity.class);
+//        intent.putExtra("EXTRA_PLACE", name);
+//        startActivity(intent);
+//    }
 
     public void onClickToAddButtonActivity(View v) {
         Intent intent = new Intent(this, AddPlace.class);
