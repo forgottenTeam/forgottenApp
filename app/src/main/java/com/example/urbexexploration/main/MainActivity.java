@@ -22,17 +22,17 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.mainButtonDomy.setOnClickListener(v -> goToPlaceActivity(v, "Mieszkalne"));
-        binding.mainButtonMilitaria.setOnClickListener(v -> goToPlaceActivity(v, "Militarne"));
-        binding.mainButtonZamki.setOnClickListener(v -> goToPlaceActivity(v, "Zamki"));
-        binding.mainButtonPrzemyslowe.setOnClickListener(v -> goToPlaceActivity(v, "Przemysłowe"));
-        binding.mainButtonKolejowe.setOnClickListener(v -> goToPlaceActivity(v, "Kolejowe"));
-        binding.mainButtonUslugowe.setOnClickListener(v -> goToPlaceActivity(v, "Usługowe"));
-        binding.mainButtonInfrastrukturalne.setOnClickListener(v -> goToPlaceActivity(v, "Infrastrukturalne"));
-        binding.mainButtonKoscioly.setOnClickListener(v -> goToPlaceActivity(v, "Sakralne"));
-        binding.mainButtonInne.setOnClickListener(v -> goToPlaceActivity(v, "Inne"));
+        binding.mainButtonDomy.setOnClickListener(v -> goToPlaceActivity("Mieszkalne"));
+        binding.mainButtonMilitaria.setOnClickListener(v -> goToPlaceActivity("Militarne"));
+        binding.mainButtonZamki.setOnClickListener(v -> goToPlaceActivity("Zamki"));
+        binding.mainButtonPrzemyslowe.setOnClickListener(v -> goToPlaceActivity("Przemysłowe"));
+        binding.mainButtonKolejowe.setOnClickListener(v -> goToPlaceActivity("Kolejowe"));
+        binding.mainButtonUslugowe.setOnClickListener(v -> goToPlaceActivity("Usługowe"));
+        binding.mainButtonInfrastrukturalne.setOnClickListener(v -> goToPlaceActivity("Infrastrukturalne"));
+        binding.mainButtonKoscioly.setOnClickListener(v -> goToPlaceActivity("Sakralne"));
+        binding.mainButtonInne.setOnClickListener(v -> goToPlaceActivity("Inne"));
         binding.mainButtonAbout.setOnClickListener(v -> goToAboutActivity(v));
-        binding.mainButtonList.setOnClickListener(v -> goToPlaceActivity(v, null));
+        binding.mainButtonList.setOnClickListener(v -> goToPlaceActivity(null));
         binding.mainButtonSearch.setOnClickListener(v -> goToSearchActivity(v));
 
     }
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToPlaceActivity(View view, String category) {
+    public void goToPlaceActivity(String category) {
         Intent intent = new Intent(this, PlaceListActivity.class);
         intent.putExtra("EXTRA_CATEGORY", category);
         startActivity(intent);

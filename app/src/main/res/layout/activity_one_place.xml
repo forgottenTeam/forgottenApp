@@ -36,7 +36,7 @@
             android:textSize="18dp" />
 
         <TextView
-            android:id="@+id/onePlace_localisation_textView"
+            android:id="@+id/onePlace_province_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -44,7 +44,19 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
-            android:text="Lokalizacja"
+            android:text="Wojewodztwo"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/onePlace_city_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Miasto"
             android:textSize="18dp" />
 
         <TextView

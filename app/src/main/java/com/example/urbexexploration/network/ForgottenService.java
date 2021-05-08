@@ -15,3 +15,4 @@ public interface ForgottenService {
     @GET("/places/one")
     Call<Place> getOnePlace(@Query("id") int id);
 }
+

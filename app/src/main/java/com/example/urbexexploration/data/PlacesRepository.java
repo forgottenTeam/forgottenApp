@@ -27,11 +27,13 @@ public class PlacesRepository {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://192.168.1.19:8080/")
                 .client(client)
                 .addConverterFactory(MoshiConverterFactory.create())
                 .build();
+
         serviceForg = retrofit.create(ForgottenService.class);
         placesLiveData = new MutableLiveData<>();
         onePlaceLiveData = new MutableLiveData<>();
@@ -76,4 +78,5 @@ public class PlacesRepository {
     public LiveData<List<Place>> getPlacesLiveData() {
         return placesLiveData;
     }
+
 }

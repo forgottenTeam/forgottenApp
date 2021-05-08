@@ -45,7 +45,6 @@ public class PlaceListActivity extends AppCompatActivity {
         binding.recyclerAddButton.setOnClickListener(v -> onClickToAddButtonActivity(v));
 
         placeListViewModel = new ViewModelProvider(this).get(PlaceListViewModel.class);
-
         placeListViewModel.getPlacesLiveData().observe(this, placeList -> {
 
             mAdapter.submitList(placeList);
@@ -53,7 +52,7 @@ public class PlaceListActivity extends AppCompatActivity {
             if (category != null) {
                 placeListViewModel.filterListCategory(category);
             } else if
-            (province != null)  {
+            (province != null) {
                 placeListViewModel.filterListProvince(province);
             }
         });
