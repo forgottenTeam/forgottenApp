@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.urbexexploration.network.ForgottenService;
+import com.example.urbexexploration.places.OnPlaceClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,8 @@ import retrofit2.converter.moshi.MoshiConverterFactory;
 public class PlacesRepository {
     private ForgottenService serviceForg;
     private MutableLiveData<List<Place>> placesLiveData;
+    private MutableLiveData<Place> onePlaceLiveData;
+    private OnPlaceClickListener listener;
 
     public PlacesRepository() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -33,6 +36,27 @@ public class PlacesRepository {
 
         serviceForg = retrofit.create(ForgottenService.class);
         placesLiveData = new MutableLiveData<>();
+        onePlaceLiveData = new MutableLiveData<>();
+    }
+
+    public void queryOnePlace(int id) {
+        serviceForg.getOnePlace(id).enqueue(new Callback<Place>() {
+            @Override
+            public void onResponse(Call<Place> call, Response<Place> response) {
+                if (response.isSuccessful()) {
+                    onePlaceLiveData.setValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Place> call, Throwable t) {
+                onePlaceLiveData.setValue(new Place());                 //Toast wrzucic ?
+            }
+        });
+    }
+
+    public LiveData<Place> getOnePlaceLiveData() {
+        return onePlaceLiveData;
     }
 
     public void queryPlaces() {
@@ -54,4 +78,5 @@ public class PlacesRepository {
     public LiveData<List<Place>> getPlacesLiveData() {
         return placesLiveData;
     }
+
 }

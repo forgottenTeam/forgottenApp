@@ -31,10 +31,10 @@ public class SearchActivity extends AppCompatActivity {
         binding.searchImageView.setImageResource(R.drawable.mapa_wojewodztwa);
         imageView = binding.searchImageView;
 
-        ArrayAdapter<String> chooseProvince = new ArrayAdapter<String>(SearchActivity.this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.province));
+        ArrayAdapter<String> chooseProvince = new ArrayAdapter<String>(SearchActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.province));
         chooseProvince.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.searchProvinceInputText.setAdapter(chooseProvince);
-        binding.searchSearchButton.setOnClickListener(v -> goToPlaceActivityProvince(v, binding.searchProvinceInputText.getText().toString()));
+        binding.searchSearchButton.setOnClickListener(v -> goToPlaceActivityProvince(binding.searchProvinceInputText.getText().toString()));
 
     }
 
@@ -55,10 +55,9 @@ public class SearchActivity extends AppCompatActivity {
         }
     }
 
-    public void goToPlaceActivityProvince(View view, String province) {
+    public void goToPlaceActivityProvince(String province) {
         Intent intent = new Intent(this, PlaceListActivity.class);
         intent.putExtra("EXTRA_PROVINCE", province);
         startActivity(intent);
-        //System.out.println(binding.searchProvinceInputText.getText().toString());
     }
 }
