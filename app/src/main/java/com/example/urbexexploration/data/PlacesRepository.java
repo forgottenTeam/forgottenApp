@@ -85,8 +85,8 @@ public class PlacesRepository {
         return placesLiveData;
     }
 
-    public void upload(RequestBody requestBody, Place place) {
-        MultipartBody.Part multipart = MultipartBody.Part.createFormData("image", "image2", requestBody);
+    public void upload(RequestBody requestBody, Place place, String name) {
+        MultipartBody.Part multipart = MultipartBody.Part.createFormData("image", name, requestBody);
 
         serviceForg.addPlace(
                 multipart,

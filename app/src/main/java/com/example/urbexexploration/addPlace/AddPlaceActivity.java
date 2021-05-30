@@ -6,8 +6,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.OpenableColumns;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -48,11 +50,14 @@ public class AddPlaceActivity extends AppCompatActivity {
         binding.saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isValid()) {
+
+                if (isNotValid()) {
                     Toast.makeText(AddPlaceActivity.this, "Uzupełnij wszystkie pola!", Toast.LENGTH_SHORT).show();
                 } else {
-                    addPlaceViewModel.upload(
-                            new UriRequestBody(getContentResolver(), Uri.parse(addPlaceViewModel.getUriImage())),
+                    Uri uri = Uri.parse(addPlaceViewModel.getUriImage());
+                    addPlaceViewModel.addNewPlace(
+                            new UriRequestBody(getContentResolver(), uri),
+                            getFileName(uri),
                             new Place(0, binding.addNameInputText.getText().toString(),
                                     binding.categoryTextView.getText().toString(),
                                     binding.addCityInputText.getText().toString(),
@@ -95,14 +100,36 @@ public class AddPlaceActivity extends AppCompatActivity {
         }
     }
 
-    private Boolean isValid() {
-        return TextUtils.isEmpty(binding.categoryTextView.getText()) &&
-                TextUtils.isEmpty(binding.addNameInputText.getText()) &&
-                TextUtils.isEmpty(binding.addCityInputText.getText()) &&
-                TextUtils.isEmpty(binding.addDescriptionInputText.getText()) &&
-                TextUtils.isEmpty(binding.addProvinceInputText.getText()) &&
-                TextUtils.isEmpty(binding.addLatitudeInputText.getText()) &&
-                TextUtils.isEmpty(binding.addLongitudeInputText.getText()) &&
+    private Boolean isNotValid() {
+        return TextUtils.isEmpty(binding.categoryTextView.getText()) ||
+                TextUtils.isEmpty(binding.addNameInputText.getText()) ||
+                TextUtils.isEmpty(binding.addCityInputText.getText()) ||
+                TextUtils.isEmpty(binding.addDescriptionInputText.getText()) ||
+                TextUtils.isEmpty(binding.addProvinceInputText.getText()) ||
+                TextUtils.isEmpty(binding.addLatitudeInputText.getText()) ||
+                TextUtils.isEmpty(binding.addLongitudeInputText.getText()) ||
                 TextUtils.isEmpty(addPlaceViewModel.getUriImage());
+    }
+
+    public String getFileName(Uri uri) {
+        String result = null;
+        if (uri.getScheme().equals("content")) {
+            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+            try {
+                if (cursor != null && cursor.moveToFirst()) {
+                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+        if (result == null) {
+            result = uri.getPath();
+            int cut = result.lastIndexOf('/');
+            if (cut != -1) {
+                result = result.substring(cut + 1);
+            }
+        }
+        return result;
     }
 }

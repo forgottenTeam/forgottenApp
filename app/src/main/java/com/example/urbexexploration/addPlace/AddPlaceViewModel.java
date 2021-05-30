@@ -15,8 +15,8 @@ public class AddPlaceViewModel extends ViewModel {
         repository = new PlacesRepository();
     }
 
-    public void upload(UriRequestBody uri, Place place) {
-        repository.upload(uri, place);
+    public void addNewPlace(UriRequestBody uri, String name, Place place) {
+        repository.upload(uri, place, name);
     }
 
     public void saveUri(String uri) {
