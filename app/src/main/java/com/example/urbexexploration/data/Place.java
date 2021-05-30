@@ -13,6 +13,21 @@ public class Place {
     private double longitude;
     private List<String> images;
 
+    public Place(int id, String name, String category, String city, String description, String province, double latitude, double longitude, List<String> images) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.city = city;
+        this.description = description;
+        this.province = province;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.images = images;
+    }
+
+    public Place() {
+    }
+
     public int getId() {
         return id;
     }
@@ -49,9 +64,13 @@ public class Place {
         return description;
     }
 
-    public String getProvince() { return province; }
+    public String getProvince() {
+        return province;
+    }
 
-    public void setProvince(String province) { this.province = province; }
+    public void setProvince(String province) {
+        this.province = province;
+    }
 
     public void setDescription(String description) {
         this.description = description;

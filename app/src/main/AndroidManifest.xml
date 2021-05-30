@@ -19,7 +19,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity android:name=".onePlace.OnePlaceActivity" />
         <activity android:name=".places.PlaceListActivity" />
-        <activity android:name=".addPlace.AddPlace" />
+        <activity android:name=".addPlace.AddPlaceActivity" />
         <activity android:name=".about.LinksAboutActivity" />
         <activity android:name=".about.AboutActivity" />
         <activity

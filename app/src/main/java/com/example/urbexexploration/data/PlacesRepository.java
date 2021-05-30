@@ -9,7 +9,11 @@ import com.example.urbexexploration.places.OnPlaceClickListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,6 +25,7 @@ public class PlacesRepository {
     private ForgottenService serviceForg;
     private MutableLiveData<List<Place>> placesLiveData;
     private MutableLiveData<Place> onePlaceLiveData;
+    private MutableLiveData<String> uploadResultLiveData;
     private OnPlaceClickListener listener;
 
     public PlacesRepository() {
@@ -29,7 +34,7 @@ public class PlacesRepository {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.19:8080/")
+                .baseUrl("http://192.168.1.27:8080/")
                 .client(client)
                 .addConverterFactory(MoshiConverterFactory.create())
                 .build();
@@ -37,6 +42,7 @@ public class PlacesRepository {
         serviceForg = retrofit.create(ForgottenService.class);
         placesLiveData = new MutableLiveData<>();
         onePlaceLiveData = new MutableLiveData<>();
+        uploadResultLiveData = new MutableLiveData<>();
     }
 
     public void queryOnePlace(int id) {
@@ -79,4 +85,38 @@ public class PlacesRepository {
         return placesLiveData;
     }
 
+    public void upload(RequestBody requestBody, Place place) {
+        MultipartBody.Part multipart = MultipartBody.Part.createFormData("image", "image2", requestBody);
+
+        serviceForg.addPlace(
+                multipart,
+                getRequestBody(place.getName()),
+                getRequestBody(place.getCategory()),
+                getRequestBody(place.getDescription()),
+                getRequestBody(place.getCity()),
+                getRequestBody(place.getProvince()),
+                place.getLongitude(),
+                place.getLatitude()).enqueue(new Callback<ResponseBody>() {
+
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    uploadResultLiveData.setValue(response.toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                uploadResultLiveData.setValue(t.toString());
+            }
+        });
+    }
+
+    public MutableLiveData<String> getUploadResultLiveData() {
+        return uploadResultLiveData;
+    }
+
+    private RequestBody getRequestBody (String string) {
+        return RequestBody.create(MediaType.parse("multipart/form-data"), string);
+    }
 }
