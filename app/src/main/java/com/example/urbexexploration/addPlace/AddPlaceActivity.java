@@ -3,8 +3,10 @@ package com.example.urbexexploration.addPlace;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -21,12 +23,15 @@ public class AddPlaceActivity extends AppCompatActivity {
     private PlacesRepository placesRepository = new PlacesRepository();
     private ActivityAddBinding binding;
     public static final int PICK_IMAGE_REQUEST = 1;
+    private AddPlaceViewModel addPlaceViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityAddBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        addPlaceViewModel = new ViewModelProvider(this).get(AddPlaceViewModel.class);
 
         binding.addPhotoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +40,24 @@ public class AddPlaceActivity extends AppCompatActivity {
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+            }
+        });
+
+        binding.saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addPlaceViewModel.upload(
+                        new UriRequestBody(getContentResolver(), Uri.parse(addPlaceViewModel.getUriImage())),
+                        new Place(0, binding.addNameInputText.getText().toString(),
+                                binding.categoryTextView.getText().toString(),
+                                binding.addCityInputText.getText().toString(),
+                                binding.addDescriptionInputText.getText().toString(),
+                                binding.addProvinceInputText.getText().toString(),
+                                Double.valueOf(binding.addLatitudeInputText.getText().toString()),
+                                Double.valueOf(binding.addLongitudeInputText.getText().toString()),
+                                null
+                        )
+                );
             }
         });
 
@@ -58,18 +81,7 @@ public class AddPlaceActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK) {
-            placesRepository.upload(
-                    new UriRequestBody(getContentResolver(), data.getData()),
-                    new Place(0, binding.addNameInputText.getText().toString(),
-                            binding.categoryTextView.getText().toString(),
-                            binding.addCityInputText.getText().toString(),
-                            binding.addDescriptionInputText.getText().toString(),
-                            binding.addProvinceInputText.getText().toString(),
-                            Double.valueOf(binding.addLatitudeInputText.getText().toString()),
-                            Double.valueOf(binding.addLongitudeInputText.getText().toString()),
-                            null
-                    )
-            );
+            addPlaceViewModel.saveUri(data.getData().toString());
         }
     }
 
