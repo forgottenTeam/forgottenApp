@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.urbexexploration.R;
 import com.example.urbexexploration.data.Place;
 import com.example.urbexexploration.data.PlacesRepository;
@@ -87,6 +88,10 @@ public class AddPlaceActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK) {
             addPlaceViewModel.saveUri(data.getData().toString());
+            Glide.with(this)
+                    .load(data.getData())
+                    .centerCrop()
+                    .into(binding.previewImageView);
         }
     }
 
