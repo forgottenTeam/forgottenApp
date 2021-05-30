@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
@@ -46,18 +47,22 @@ public class AddPlaceActivity extends AppCompatActivity {
         binding.saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addPlaceViewModel.upload(
-                        new UriRequestBody(getContentResolver(), Uri.parse(addPlaceViewModel.getUriImage())),
-                        new Place(0, binding.addNameInputText.getText().toString(),
-                                binding.categoryTextView.getText().toString(),
-                                binding.addCityInputText.getText().toString(),
-                                binding.addDescriptionInputText.getText().toString(),
-                                binding.addProvinceInputText.getText().toString(),
-                                Double.valueOf(binding.addLatitudeInputText.getText().toString()),
-                                Double.valueOf(binding.addLongitudeInputText.getText().toString()),
-                                null
-                        )
-                );
+                if (!isValid()) {
+                    Toast.makeText(AddPlaceActivity.this, "Uzupełnij wszystkie pola!", Toast.LENGTH_SHORT).show();
+                } else {
+                    addPlaceViewModel.upload(
+                            new UriRequestBody(getContentResolver(), Uri.parse(addPlaceViewModel.getUriImage())),
+                            new Place(0, binding.addNameInputText.getText().toString(),
+                                    binding.categoryTextView.getText().toString(),
+                                    binding.addCityInputText.getText().toString(),
+                                    binding.addDescriptionInputText.getText().toString(),
+                                    binding.addProvinceInputText.getText().toString(),
+                                    Double.valueOf(binding.addLatitudeInputText.getText().toString()),
+                                    Double.valueOf(binding.addLongitudeInputText.getText().toString()),
+                                    null
+                            )
+                    );
+                }
             }
         });
 
@@ -85,4 +90,13 @@ public class AddPlaceActivity extends AppCompatActivity {
         }
     }
 
+    private Boolean isValid() {
+        return TextUtils.isEmpty(binding.categoryTextView.getText()) &&
+                TextUtils.isEmpty(binding.addNameInputText.getText()) &&
+                TextUtils.isEmpty(binding.addCityInputText.getText()) &&
+                TextUtils.isEmpty(binding.addDescriptionInputText.getText()) &&
+                TextUtils.isEmpty(binding.addProvinceInputText.getText()) &&
+                TextUtils.isEmpty(binding.addLatitudeInputText.getText()) &&
+                TextUtils.isEmpty(binding.addLongitudeInputText.getText());
+    }
 }
