@@ -1,5 +1,6 @@
 package com.example.urbexexploration.addPlace;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.urbexexploration.data.Place;
@@ -25,5 +26,9 @@ public class AddPlaceViewModel extends ViewModel {
 
     public String getUriImage() {
         return uriImage;
+    }
+
+    public LiveData<AddPlaceResult> getAddPlaceResult () {
+        return repository.getUploadResultLiveData();
     }
 }

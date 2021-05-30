@@ -36,6 +36,17 @@ public class AddPlaceActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         addPlaceViewModel = new ViewModelProvider(this).get(AddPlaceViewModel.class);
+        addPlaceViewModel.getAddPlaceResult().observe(this, new Observer<AddPlaceResult>() {
+            @Override
+            public void onChanged(AddPlaceResult addPlaceResult) {
+                if (addPlaceResult.isSuccess()) {
+                    finish();
+                    Toast.makeText(AddPlaceActivity.this, "Dodano nowe miejsce!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(AddPlaceActivity.this, "Błąd!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         binding.addPhotoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,13 +90,6 @@ public class AddPlaceActivity extends AppCompatActivity {
         ArrayAdapter<String> chooseProvince = new ArrayAdapter<String>(AddPlaceActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.province));
         chooseCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.addProvinceInputText.setAdapter(chooseProvince);
-
-        placesRepository.getUploadResultLiveData().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                Toast.makeText(AddPlaceActivity.this, s, Toast.LENGTH_LONG);
-            }
-        });
     }
 
     @Override

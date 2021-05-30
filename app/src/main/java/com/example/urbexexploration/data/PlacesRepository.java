@@ -3,6 +3,7 @@ package com.example.urbexexploration.data;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.urbexexploration.addPlace.AddPlaceResult;
 import com.example.urbexexploration.network.ForgottenService;
 import com.example.urbexexploration.places.OnPlaceClickListener;
 
@@ -25,8 +26,9 @@ public class PlacesRepository {
     private ForgottenService serviceForg;
     private MutableLiveData<List<Place>> placesLiveData;
     private MutableLiveData<Place> onePlaceLiveData;
-    private MutableLiveData<String> uploadResultLiveData;
-    private OnPlaceClickListener listener;
+    private MutableLiveData<AddPlaceResult> uploadResultLiveData;
+//    private OnPlaceClickListener listener;
+
 
     public PlacesRepository() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -101,22 +103,24 @@ public class PlacesRepository {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
-                    uploadResultLiveData.setValue(response.toString());
+                    uploadResultLiveData.setValue(new AddPlaceResult(true));
+                } else {
+                    uploadResultLiveData.setValue(new AddPlaceResult(false));
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                uploadResultLiveData.setValue(t.toString());
+                uploadResultLiveData.setValue(new AddPlaceResult(false));
             }
         });
     }
 
-    public MutableLiveData<String> getUploadResultLiveData() {
+    public MutableLiveData<AddPlaceResult> getUploadResultLiveData() {
         return uploadResultLiveData;
     }
 
-    private RequestBody getRequestBody (String string) {
+    private RequestBody getRequestBody(String string) {
         return RequestBody.create(MediaType.parse("multipart/form-data"), string);
     }
 }
