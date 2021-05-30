@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.os.Handler;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,8 @@ import com.example.urbexexploration.places.OnPlaceClickListener;
 public class OnePlaceActivity extends AppCompatActivity {
     private ActivityOnePlaceBinding binding;
     private OnePlaceViewModel onePlaceViewModel;
+    private double latitude;
+    private double longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,10 @@ public class OnePlaceActivity extends AppCompatActivity {
 
         onePlaceViewModel = new ViewModelProvider(this).get(OnePlaceViewModel.class);
         onePlaceViewModel.getOnePlaceLiveData().observe(this, place -> {
+
+            latitude = place.getLatitude();
+            longitude = place.getLongitude();
+
             binding.onePlaceOpisTextView.setText(place.getDescription());
             binding.onePlaceTitleTextView.setText(place.getName());
             binding.onePlaceCategoryTextView.setText("Kategoria: " + place.getCategory());
@@ -36,6 +43,17 @@ public class OnePlaceActivity extends AppCompatActivity {
         });
         onePlaceViewModel.loadData(id);
 
+        binding.onePlaceButtonNavigation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri gmmIntentUri = Uri.parse("http://maps.google.com/maps?daddr=" + latitude + "," + longitude);
+                Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(mapIntent);
+                }
+            }
+        });
 
         binding.onePlaceImageView1.setOnClickListener(new View.OnClickListener() {
             @Override
