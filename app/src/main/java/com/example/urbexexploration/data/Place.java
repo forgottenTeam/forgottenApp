@@ -11,9 +11,10 @@ public class Place {
     private String province;
     private double latitude;
     private double longitude;
-    private List<String> images;
+    //    private List<String> images;
+    private String photoUri;
 
-    public Place(int id, String name, String category, String city, String description, String province, double latitude, double longitude, List<String> images) {
+    public Place(int id, String name, String category, String city, String description, String province, double latitude, double longitude, String photoUri) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -22,7 +23,8 @@ public class Place {
         this.province = province;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.images = images;
+        this.photoUri = photoUri;
+//        this.images = images;
     }
 
     public Place() {
@@ -92,11 +94,19 @@ public class Place {
         this.longitude = longitude;
     }
 
-    public List<String> getImages() {
-        return images;
+    public String getPhotoUri() {
+        return photoUri;
     }
 
-    public void setImages(List<String> images) {
-        this.images = images;
+    public void setPhotoUri(String photoUri) {
+        this.photoUri = photoUri;
     }
+
+    //    public List<String> getImages() {
+//        return images;
+//    }
+//
+//    public void setImages(List<String> images) {
+//        this.images = images;
+//    }
 }

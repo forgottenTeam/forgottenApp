@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.bumptech.glide.Glide;
 import com.example.urbexexploration.R;
 import com.example.urbexexploration.databinding.ActivityOnePlaceBinding;
 import com.example.urbexexploration.places.OnPlaceClickListener;
@@ -39,7 +40,17 @@ public class OnePlaceActivity extends AppCompatActivity {
             binding.onePlaceCategoryTextView.setText("Kategoria: " + place.getCategory());
             binding.onePlaceCityTextView.setText("Miasto: " + place.getCity());
             binding.onePlaceProvinceTextView.setText("Województwo: " + place.getProvince());
-            binding.onePlaceImageView1.setImageResource(R.drawable.domy);
+            Glide.with(this)
+                    .load(place.getPhotoUri())
+                    .centerCrop()
+                    .into(binding.onePlaceImageView1);
+
+            binding.onePlaceImageView1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onImageClickedExplorer(Uri.parse(place.getPhotoUri()));
+                }
+            });
         });
         onePlaceViewModel.loadData(id);
 
@@ -52,31 +63,6 @@ public class OnePlaceActivity extends AppCompatActivity {
                 if (mapIntent.resolveActivity(getPackageManager()) != null) {
                     startActivity(mapIntent);
                 }
-            }
-        });
-
-        binding.onePlaceImageView1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onImageClickedExplorer(Uri.parse("https://buydesign.pl/wp-content/uploads/2019/01/obrazek-mi%C5%9B-koala-32320-min.png"));
-            }
-        });
-        binding.onePlaceImageView2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onImageClickedExplorer(Uri.parse("https://buydesign.pl/wp-content/uploads/2019/01/obrazek-mi%C5%9B-koala-32320-min.png"));
-            }
-        });
-        binding.onePlaceImageView3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onImageClickedExplorer(Uri.parse("https://buydesign.pl/wp-content/uploads/2019/01/obrazek-mi%C5%9B-koala-32320-min.png"));
-            }
-        });
-        binding.onePlaceImageView4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onImageClickedExplorer(Uri.parse("https://buydesign.pl/wp-content/uploads/2019/01/obrazek-mi%C5%9B-koala-32320-min.png"));
             }
         });
     }
