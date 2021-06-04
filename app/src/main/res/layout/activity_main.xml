@@ -67,12 +67,15 @@
             android:layout_height="50dp"
             android:orientation="horizontal">
 
-            <SearchView
-                android:id="@+id/main_searchTask"
+            <TextView
+                android:id="@+id/main_titleTask"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:iconifiedByDefault="false"
-                android:queryHint="What do You want to see?" />
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="WYBIERZ KATEGORIĘ"
+                android:textColor="@color/black"
+                android:textSize="22dp"
+                android:textStyle="normal" />
         </LinearLayout>
 
         <LinearLayout
