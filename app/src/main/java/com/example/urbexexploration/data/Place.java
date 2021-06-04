@@ -95,7 +95,7 @@ public class Place {
     }
 
     public String getPhotoUri() {
-        return photoUri;
+        return "http://192.168.1.27:8080/places/image/"+id;
     }
 
     public void setPhotoUri(String photoUri) {
