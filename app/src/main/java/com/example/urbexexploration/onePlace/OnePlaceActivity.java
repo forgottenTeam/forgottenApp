@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.urbexexploration.R;
 import com.example.urbexexploration.databinding.ActivityOnePlaceBinding;
 import com.example.urbexexploration.places.OnPlaceClickListener;
@@ -42,7 +43,7 @@ public class OnePlaceActivity extends AppCompatActivity {
             binding.onePlaceProvinceTextView.setText("Województwo: " + place.getProvince());
             Glide.with(this)
                     .load(place.getPhotoUri())
-                    .timeout(300000)
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .error(R.drawable.empty_photo)
                     .placeholder(R.drawable.loading_photo)
                     .centerCrop()

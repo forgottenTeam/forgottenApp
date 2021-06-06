@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.urbexexploration.R;
 import com.example.urbexexploration.data.Place;
 import com.example.urbexexploration.data.PlacesRepository;
@@ -65,20 +66,37 @@ public class AddPlaceActivity extends AppCompatActivity {
                 if (isNotValid()) {
                     Toast.makeText(AddPlaceActivity.this, "Uzupełnij wszystkie pola!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Uri uri = Uri.parse(addPlaceViewModel.getUriImage());
-                    addPlaceViewModel.addNewPlace(
-                            new UriRequestBody(getContentResolver(), uri),
-                            getFileName(uri),
-                            new Place(0, binding.addNameInputText.getText().toString(),
-                                    binding.categoryTextView.getText().toString(),
-                                    binding.addCityInputText.getText().toString(),
-                                    binding.addDescriptionInputText.getText().toString(),
-                                    binding.addProvinceInputText.getText().toString(),
-                                    Double.valueOf(binding.addLatitudeInputText.getText().toString()),
-                                    Double.valueOf(binding.addLongitudeInputText.getText().toString()),
-                                    null
-                            )
-                    );
+                    if (addPlaceViewModel.getUriImage() == null) {
+                        addPlaceViewModel.addNewPlace(
+                                null, null,
+                                new Place(0, binding.addNameInputText.getText().toString(),
+                                        binding.categoryTextView.getText().toString(),
+                                        binding.addCityInputText.getText().toString(),
+                                        binding.addDescriptionInputText.getText().toString(),
+                                        binding.addProvinceInputText.getText().toString(),
+                                        Double.valueOf(binding.addLatitudeInputText.getText().toString()),
+                                        Double.valueOf(binding.addLongitudeInputText.getText().toString()),
+                                        null
+                                )
+                        );
+
+                    } else {
+                        Uri uri = Uri.parse(addPlaceViewModel.getUriImage());
+
+                        addPlaceViewModel.addNewPlace(
+                                new UriRequestBody(getContentResolver(), uri),
+                                getFileName(uri),
+                                new Place(0, binding.addNameInputText.getText().toString(),
+                                        binding.categoryTextView.getText().toString(),
+                                        binding.addCityInputText.getText().toString(),
+                                        binding.addDescriptionInputText.getText().toString(),
+                                        binding.addProvinceInputText.getText().toString(),
+                                        Double.valueOf(binding.addLatitudeInputText.getText().toString()),
+                                        Double.valueOf(binding.addLongitudeInputText.getText().toString()),
+                                        null
+                                )
+                        );
+                    }
                 }
             }
         });
@@ -99,6 +117,7 @@ public class AddPlaceActivity extends AppCompatActivity {
             addPlaceViewModel.saveUri(data.getData().toString());
             Glide.with(this)
                     .load(data.getData())
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .centerCrop()
                     .into(binding.previewImageView);
         }
@@ -111,8 +130,8 @@ public class AddPlaceActivity extends AppCompatActivity {
                 TextUtils.isEmpty(binding.addDescriptionInputText.getText()) ||
                 TextUtils.isEmpty(binding.addProvinceInputText.getText()) ||
                 TextUtils.isEmpty(binding.addLatitudeInputText.getText()) ||
-                TextUtils.isEmpty(binding.addLongitudeInputText.getText()) ||
-                TextUtils.isEmpty(addPlaceViewModel.getUriImage());
+                TextUtils.isEmpty(binding.addLongitudeInputText.getText()); // ||
+        //   TextUtils.isEmpty(addPlaceViewModel.getUriImage());
     }
 
     public String getFileName(Uri uri) {

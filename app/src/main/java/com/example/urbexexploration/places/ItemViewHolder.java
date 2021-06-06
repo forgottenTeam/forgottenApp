@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.urbexexploration.R;
 import com.example.urbexexploration.data.Place;
 import com.example.urbexexploration.databinding.RecyclerCardBinding;
@@ -23,6 +24,7 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
     public void bind(Place place) {
         Glide.with(binding.getRoot().getContext())
                 .load(place.getPhotoUri())
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .error(R.drawable.empty_photo)
                 .placeholder(R.drawable.loading_photo)
                 .centerCrop()

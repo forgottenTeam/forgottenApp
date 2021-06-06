@@ -88,7 +88,11 @@ public class PlacesRepository {
     }
 
     public void upload(RequestBody requestBody, Place place, String name) {
-        MultipartBody.Part multipart = MultipartBody.Part.createFormData("image", name, requestBody);
+        MultipartBody.Part multipart = null;
+
+        if (requestBody != null && name != null) {
+            multipart = MultipartBody.Part.createFormData("image", name, requestBody);
+        }
 
         serviceForg.addPlace(
                 multipart,
