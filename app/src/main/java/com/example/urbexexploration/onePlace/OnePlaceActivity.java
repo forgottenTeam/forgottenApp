@@ -42,6 +42,7 @@ public class OnePlaceActivity extends AppCompatActivity {
             binding.onePlaceProvinceTextView.setText("Województwo: " + place.getProvince());
             Glide.with(this)
                     .load(place.getPhotoUri())
+                    .timeout(300000)
                     .error(R.drawable.empty_photo)
                     .placeholder(R.drawable.loading_photo)
                     .centerCrop()

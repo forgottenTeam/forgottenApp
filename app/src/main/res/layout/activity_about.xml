@@ -19,6 +19,7 @@
             android:layout_marginBottom="8dp"
             android:layout_weight="1"
             android:gravity="center"
+            android:textColor="@color/black"
             android:textSize="36sp" />
 
         <TextView
@@ -33,6 +34,7 @@
             android:layout_marginBottom="8dp"
             android:layout_weight="1"
             android:text="Urbex (z ang. urban exploration — eksploracja miejska) — forma aktywności polegająca na eksplorowaniu opuszczonych, zrujnowanych, zapomnianych, niedostępnych czy ukrytych budynków i instalacji stworzonych przez człowieka. Celem osób uprawiających urbex jest filmowanie, fotografowanie lub po prostu zdobywanie informacji dotyczących danego miejsca. Wszystko odbywa się bez ingerencji w jego stan, zgodnie z zasadą take only pictures, leave only footsteps (zabierz tylko zdjęcia, zostaw tylko ślady stóp)."
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
         <TextView
@@ -42,6 +44,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Dla kogo to ?"
+            android:textColor="@color/black"
             android:textSize="36sp" />
 
         <TextView
@@ -56,6 +59,7 @@
             android:layout_marginBottom="8dp"
             android:layout_weight="1"
             android:text="Trudno jednoznacznie zdefiniować typowego urbexowicza. Motywacje do rozpoczęcia przygody z tą formą spędzania czasu są różne. Osoby pasjonujące się fotografią mogą odnaleźć w opuszczonych miejscach niepowtarzalny klimat i okazje do zrobienia porywających zdjęć. Podobnie rzecz ma się z filmowcami, który dodatkowo często tworzą wideorelacje z takich wypadów i zamieszczają np. na YouTube. Kolejna grupa to miłośnicy adrenaliny, którzy spełniają się, wchodząc tam, gdzie niewielu było, niejednokrotnie stosując przy tym techniki parkourowe. Wśród eksploratorów nie brakuje też amatorów historii, legend miejskich, teorii spiskowych, zjawisk paranormalnych itd. Przekrój jest bardzo duży. Rzecz jasna, jak w każdej społeczności, trafiają się czarne owce, czyli osobnicy odwiedzający opuszczone miejsca w celu dokonywania aktów wandalizmu, kradzieży mienia czy spożywania używek. W takich przypadkach nie mamy jednak do czynienia z urbexem, co na każdym kroku podkreślają osoby w niego zaangażowane."
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
         <TextView
@@ -65,6 +69,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Jak zacząć ?"
+            android:textColor="@color/black"
             android:textSize="36sp" />
 
         <TextView
@@ -79,6 +84,7 @@
             android:layout_marginBottom="8dp"
             android:layout_weight="1"
             android:text="Chodzenie po opuszczonych budynkach może nie wydawać się czymś trudnym czy wymagającym, ale realia często okazują się zupełnie inne. Z tego powodu należy przede wszystkim określić granicę swoich możliwości — tak fizycznych, jak i psychicznych — i na tej podstawie wybierać cele swoich eksploracji. Zagrożenia występujące w niejednokrotnie zdewastowanych miejscach potrafią zaskoczyć nawet doświadczonych poszukiwaczu przygód, a co dopiero początkujących.  Nie mając pojęcia o wspinaczce nie wybieramy obiektów wymagających tej umiejętności. Osoby słusznej budowy powinny unikać ciasnych przejść, grot czy osłabionych stropów itd. Mając lęk wysokości, unikamy wysoko położonych podestów, dachów czy grani. Wszelkie fobie dotyczące pająków, szczurów czy robactwa też mogą być przyczyną ataków paniki podczas eksplorowania opuszczonych stref. Mając problemy z sercem, raczej nie angażujemy się w wyprawy do miejsc, wokół których krążą niepokojące legendy, etc. Kolejna sprawa to drużyna. Urbex w pojedynkę to raczej kiepski pomysł dla nowicjuszy. We dwójkę czy więcej osób mamy większe możliwości odkrycia wszystkich sekretów, a przy okazji wsparcie innych daje komfort psychiczny, gdy atmosfera jest „gęsta”. To również większe szanse ratunku w razie wypadku. Jeśli jednak nie mamy z kim wędrować, przed wyruszeniem informujemy kogoś zaufanego o naszych planach z uwzględnieniem wybranej lokalizacji oraz terminów wyprawy i powrotu.  Ponadto przed rozpoczęciem eksploracji warto zapoznać się z materiałami urbexowych weteranów na forach, blogach czy YouTube. Mając takie podstawy, można rozpocząć kompletowanie sprzętu."
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
         <TextView
@@ -88,6 +94,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="URBEX, a prawo"
+            android:textColor="@color/black"
             android:textSize="36sp" />
 
         <TextView
@@ -102,6 +109,7 @@
             android:layout_marginBottom="8dp"
             android:layout_weight="1"
             android:text="Trzeba mieć świadomość, że urbex to niejednokrotnie działanie na granicy prawa. Czasem wchodząc na dany obiekt nie mamy nawet świadomości, że jest to niedozwolone. Naruszenie terenu prywatnego bez pozwolenia może skutkować usunięciem przez ochronę lub konsekwencjami finansowymi, a nawet prawnymi. Pamiętamy, że w razie spotkania z ochroną najlepiej przedstawić cel swojej wizyty — istnieje spora szansa, że uzyskamy pozwolenie na zwiedzanie. Jednak w dobrym tonie jest zachowanie tej informacji dla siebie, gdyż przychylność pracownika ochrony może go kosztować utratę pracy w razie ujawnienia tego faktu publicznie. Można też podjąć próbę kontaktu z właścicielem w celu uzyskania zgody. Jeśli się nie uda — najlepiej odpuścić. Ostatnia kwestia: urbex to hobby uprawiane na własną odpowiedzialność."
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
         <LinearLayout
@@ -113,15 +121,33 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <ImageButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/about_buttonLinks"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                app:icon="@drawable/information"
+                app:iconPadding="0dp"
+                app:iconGravity="textStart"
+                android:padding="0dp"
+                app:cornerRadius="40dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
+                app:iconTint="@color/black"
+                app:iconSize="28dp"
+                android:backgroundTint="#AD80CBC4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="goToLinksAboutActivity"
-                app:srcCompat="@android:drawable/ic_dialog_info" />
+                android:layout_margin="16dp"/>
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/about_buttonLinks"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:layout_marginLeft="8dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:onClick="goToLinksAboutActivity"-->
+<!--                app:srcCompat="@android:drawable/ic_dialog_info" />-->
 
             <TextView
                 android:id="@+id/about_links_textView"

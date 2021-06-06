@@ -1,16 +1,20 @@
 package com.example.urbexexploration.main;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
+import com.example.urbexexploration.R;
 import com.example.urbexexploration.data.Place;
 import com.example.urbexexploration.databinding.ActivityMainBinding;
 import com.example.urbexexploration.places.PlaceListActivity;
 import com.example.urbexexploration.about.AboutActivity;
 import com.example.urbexexploration.search.SearchActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
@@ -31,13 +35,10 @@ public class MainActivity extends AppCompatActivity {
         binding.mainButtonInfrastrukturalne.setOnClickListener(v -> goToPlaceActivity("Infrastrukturalne"));
         binding.mainButtonKoscioly.setOnClickListener(v -> goToPlaceActivity("Sakralne"));
         binding.mainButtonInne.setOnClickListener(v -> goToPlaceActivity("Inne"));
-        binding.mainButtonAbout.setOnClickListener(v -> goToAboutActivity(v));
-        binding.mainButtonList.setOnClickListener(v -> goToPlaceActivity(null));
-        binding.mainButtonSearch.setOnClickListener(v -> goToSearchActivity(v));
-
+        setupBottomNavigationView();
     }
 
-    public void goToAboutActivity(View view) {
+    public void goToAboutActivity() {
         Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
@@ -48,10 +49,26 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToSearchActivity(View view) {
+    public void goToSearchActivity() {
         Intent intent = new Intent(this, SearchActivity.class);
         startActivity(intent);
     }
 
+    private void setupBottomNavigationView() {
+        binding.bottomNavigation.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.page_search:
+                    goToSearchActivity();
+                    break;
+                case R.id.page_list:
+                    goToPlaceActivity(null);
+                    break;
+                case R.id.page_info:
+                    goToAboutActivity();
+                    break;
+            }
+            return true;
+        });
+    }
 
 }
