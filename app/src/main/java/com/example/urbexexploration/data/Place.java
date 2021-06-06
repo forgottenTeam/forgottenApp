@@ -1,8 +1,8 @@
 package com.example.urbexexploration.data;
 
-import java.util.List;
-
 public class Place {
+    public static final String BASE_IMAGE_URL = PlacesRepository.BASE_URL + PlacesRepository.IMAGE_PATH;
+
     private int id;
     private String name;
     private String category;
@@ -11,7 +11,6 @@ public class Place {
     private String province;
     private double latitude;
     private double longitude;
-    //    private List<String> images;
     private String photoUri;
 
     public Place(int id, String name, String category, String city, String description, String province, double latitude, double longitude, String photoUri) {
@@ -24,7 +23,6 @@ public class Place {
         this.latitude = latitude;
         this.longitude = longitude;
         this.photoUri = photoUri;
-//        this.images = images;
     }
 
     public Place() {
@@ -95,18 +93,14 @@ public class Place {
     }
 
     public String getPhotoUri() {
-        return "http://192.168.1.27:8080/places/image/"+id;
+        if (photoUri != null) {
+            return BASE_IMAGE_URL + id;
+        } else {
+            return null;
+        }
     }
 
     public void setPhotoUri(String photoUri) {
         this.photoUri = photoUri;
     }
-
-    //    public List<String> getImages() {
-//        return images;
-//    }
-//
-//    public void setImages(List<String> images) {
-//        this.images = images;
-//    }
 }

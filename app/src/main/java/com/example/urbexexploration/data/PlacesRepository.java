@@ -23,12 +23,13 @@ import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 
 public class PlacesRepository {
+    public static final String BASE_URL = "http://192.168.1.27:8080/";
+    public static final String IMAGE_PATH = "places/image/";
+
     private ForgottenService serviceForg;
     private MutableLiveData<List<Place>> placesLiveData;
     private MutableLiveData<Place> onePlaceLiveData;
     private MutableLiveData<AddPlaceResult> uploadResultLiveData;
-//    private OnPlaceClickListener listener;
-
 
     public PlacesRepository() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -36,7 +37,7 @@ public class PlacesRepository {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.27:8080/")
+                .baseUrl(BASE_URL)
                 .client(client)
                 .addConverterFactory(MoshiConverterFactory.create())
                 .build();
@@ -58,7 +59,7 @@ public class PlacesRepository {
 
             @Override
             public void onFailure(Call<Place> call, Throwable t) {
-                onePlaceLiveData.setValue(new Place());                 //Toast wrzucic ?
+                onePlaceLiveData.setValue(new Place());
             }
         });
     }
