@@ -100,7 +100,7 @@ public class Place {
         }
     }
 
-    public void setPhotoUri(String photoUri) {
+    public void setPhotoUri (String photoUri) {
         this.photoUri = photoUri;
     }
 }

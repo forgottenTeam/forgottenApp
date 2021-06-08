@@ -22,15 +22,29 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 
+/**
+  * Repozytorium do komunikacji sieciowej aplikacji z serwerem
+ */
 public class PlacesRepository {
-    public static final String BASE_URL = "http://192.168.1.27:8080/";
+    /** Bazowy adres serwera */
+    public static final String BASE_URL = "http://192.168.1.40:8080/";
+    /** Relatywna ścieżka do obrazka na serwerze */
     public static final String IMAGE_PATH = "places/image/";
 
+    /** Serwis API serwera */
     private ForgottenService serviceForg;
+    /** Obserwowalny kontener danych, który zwraca listę miejsc */
     private MutableLiveData<List<Place>> placesLiveData;
+    /** Obserwowalny kontener danych, który zwraca pojedyńcze miejsce */
     private MutableLiveData<Place> onePlaceLiveData;
+    /** Obserwowalny kontener danych, który zwraca rezultat dodawanego miejsca */
     private MutableLiveData<AddPlaceResult> uploadResultLiveData;
 
+    /**
+     * Konstruktor repozytorium, który inicjalizuje {@link PlacesRepository#serviceForg,#placesLiveData,#onePlaceLiveData,#uploadResultLiveData}.
+     * Serwis {@link PlacesRepository#serviceForg} jest tworzony przy użyciu klienta HTTP z pełnym logowaniem komunikacji z serwerem.
+     * Odpowiedzi z serwera są serializowane przy użyciu konwertera Moshi.
+     */
     public PlacesRepository() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -48,6 +62,11 @@ public class PlacesRepository {
         uploadResultLiveData = new MutableLiveData<>();
     }
 
+    /**
+     * Pobieranie informacji o pojedyńczym miejscu z serwera. Funkcja emituje obiekt klasy {@link Place} do {@link #onePlaceLiveData}.
+     * W przypadku błędu zwracany jest pusty obiekt {@link Place}.
+     * @param id identyfikator miejsca w bazie danych
+     */
     public void queryOnePlace(int id) {
         serviceForg.getOnePlace(id).enqueue(new Callback<Place>() {
             @Override
@@ -64,10 +83,18 @@ public class PlacesRepository {
         });
     }
 
+    /**
+     * Zwracanie obserwowalnego kontenera danych pojedyńczego miejsca.
+     * @return {@link #onePlaceLiveData}
+     */
     public LiveData<Place> getOnePlaceLiveData() {
         return onePlaceLiveData;
     }
 
+    /**
+     * Pobieranie informacji o miejscach z serwera. Funkcja emituje listę obiektów klasy {@link Place} do {@link #placesLiveData}.
+     * W przypadku błędu zwracana jest pusta lista.
+     */
     public void queryPlaces() {
         serviceForg.getPlaces().enqueue(new Callback<List<Place>>() {
             @Override
@@ -79,15 +106,25 @@ public class PlacesRepository {
 
             @Override
             public void onFailure(Call<List<Place>> call, Throwable t) {
-                placesLiveData.setValue(new ArrayList<>());                 //zwraca pusta liste przy bledzie
+                placesLiveData.setValue(new ArrayList<>());
             }
         });
     }
 
+    /**
+     * Zwracanie obserwowalnego kontenera danych listy miejsc.
+     * @return {@link #placesLiveData}
+     */
     public LiveData<List<Place>> getPlacesLiveData() {
         return placesLiveData;
     }
 
+    /**
+     * Funkcja dodaje nowe miejsce do bazy danych wraz z obrazkiem, jeśli nie jest on null. Rezultat operacji zwracany jest w {@link #uploadResultLiveData}.
+     * @param requestBody dane do pola "image" przy zapytaniu do serwera.
+     * @param place dodawane miejsce.
+     * @param name nazwa wysyłanego pliku.
+     */
     public void upload(RequestBody requestBody, Place place, String name) {
         MultipartBody.Part multipart = null;
 
@@ -121,10 +158,19 @@ public class PlacesRepository {
         });
     }
 
+    /**
+     * Zwracanie obserwowanego kontenera danych rezultatu operacji dodawania miejsca.
+     * @return {@link #uploadResultLiveData}
+     */
     public MutableLiveData<AddPlaceResult> getUploadResultLiveData() {
         return uploadResultLiveData;
     }
 
+    /**
+     * Tworzenie części zapytania do serwera o podanej wartości.
+     * @param string wartość pola dla zapytania do serwera.
+     * @return częściowa zawartość zapytania do serwera.
+     */
     private RequestBody getRequestBody(String string) {
         return RequestBody.create(MediaType.parse("multipart/form-data"), string);
     }

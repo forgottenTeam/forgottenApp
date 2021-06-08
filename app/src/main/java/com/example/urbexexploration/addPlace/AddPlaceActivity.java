@@ -130,8 +130,7 @@ public class AddPlaceActivity extends AppCompatActivity {
                 TextUtils.isEmpty(binding.addDescriptionInputText.getText()) ||
                 TextUtils.isEmpty(binding.addProvinceInputText.getText()) ||
                 TextUtils.isEmpty(binding.addLatitudeInputText.getText()) ||
-                TextUtils.isEmpty(binding.addLongitudeInputText.getText()); // ||
-        //   TextUtils.isEmpty(addPlaceViewModel.getUriImage());
+                TextUtils.isEmpty(binding.addLongitudeInputText.getText());
     }
 
     public String getFileName(Uri uri) {
