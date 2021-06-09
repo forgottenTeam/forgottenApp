@@ -23,6 +23,9 @@ import com.example.urbexexploration.data.PlacesRepository;
 import com.example.urbexexploration.databinding.ActivityAddBinding;
 import com.example.urbexexploration.upload.UriRequestBody;
 
+/**
+ * Klasa widoku, w którym użytkownik dodaje nowe miejsce do bazy, wypełniając konieczne pola.
+ */
 public class AddPlaceActivity extends AppCompatActivity {
 
     private PlacesRepository placesRepository = new PlacesRepository();
@@ -110,6 +113,12 @@ public class AddPlaceActivity extends AppCompatActivity {
         binding.addProvinceInputText.setAdapter(chooseProvince);
     }
 
+    /**
+     * Wczytywanie na ekran miniaturki wybranego przez użytkownika obrazka.
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -123,6 +132,9 @@ public class AddPlaceActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Sprawdzenie czy wszystkie pola zostały uzupełnione. Funkcja zwraca wartość true jeśli przynajmniej jedno z pól jest puste.
+     */
     private Boolean isNotValid() {
         return TextUtils.isEmpty(binding.categoryTextView.getText()) ||
                 TextUtils.isEmpty(binding.addNameInputText.getText()) ||
@@ -133,6 +145,11 @@ public class AddPlaceActivity extends AppCompatActivity {
                 TextUtils.isEmpty(binding.addLongitudeInputText.getText());
     }
 
+    /**
+     * Odczytywanie nazwy pliku wybranego przez użytkownika obrazka.
+     * @param uri ścieżka dostępu do pliku obrazka
+     * @return nazwa pliku obrazka
+     */
     public String getFileName(Uri uri) {
         String result = null;
         if (uri.getScheme().equals("content")) {

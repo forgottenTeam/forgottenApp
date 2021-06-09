@@ -10,6 +10,9 @@ import com.example.urbexexploration.data.PlacesRepository;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Klasa ViewModel dla widoku PlaceList
+ */
 public class PlaceListViewModel extends ViewModel {
     private PlacesRepository repository;
     private MutableLiveData<List<Place>> filteredPlacesLiveData;
@@ -28,6 +31,10 @@ public class PlaceListViewModel extends ViewModel {
         return filteredPlacesLiveData;
     }
 
+    /**
+     * Filtrowanie listy miejsc wg wybranej kategorii
+     * @param category kategoria, wg której zostanie przefiltrowana lista
+     */
     public void filterListCategory(String category) {
         List<Place> list = repository.getPlacesLiveData().getValue();
         if (list != null) {
@@ -41,6 +48,10 @@ public class PlaceListViewModel extends ViewModel {
         }
     }
 
+    /**
+     * Filtrowanie listy miejsc wg wybranego województwa
+     * @param province województwo, wg którego zostanie przefiltrowana lista
+     */
     public void filterListProvince(String province) {
         List<Place> list = repository.getPlacesLiveData().getValue();
         if (list != null) {
@@ -54,6 +65,10 @@ public class PlaceListViewModel extends ViewModel {
         }
     }
 
+    /**
+     * Filtrowanie listy miejsc wg wpisanego łańcucha znaków
+     * @param txt wpisany przez użytkownika tekst, wg którego zostanie przefiltrowana lista
+     */
     public void filter(String txt) {
         List<Place> filteredList = new ArrayList<>();
         List<Place> list = repository.getPlacesLiveData().getValue();

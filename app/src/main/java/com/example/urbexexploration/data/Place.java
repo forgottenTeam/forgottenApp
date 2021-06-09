@@ -1,5 +1,8 @@
 package com.example.urbexexploration.data;
 
+/**
+ * Klasa opisująca pojedyncze miejsce (obiekt) za pomocą parametrów
+ */
 public class Place {
     public static final String BASE_IMAGE_URL = PlacesRepository.BASE_URL + PlacesRepository.IMAGE_PATH;
 
@@ -13,6 +16,18 @@ public class Place {
     private double longitude;
     private String photoUri;
 
+    /**
+     * Konstruktor klasy {@link Place}
+     * @param id numer id obiektu
+     * @param name nazwa obiektu
+     * @param category kategoria obiektu
+     * @param city miejscowość
+     * @param description opis obiektu
+     * @param province województwo
+     * @param latitude szerokość geograficzna
+     * @param longitude długość geograficzna
+     * @param photoUri ścieżka dostępu do pliku obrazka
+     */
     public Place(int id, String name, String category, String city, String description, String province, double latitude, double longitude, String photoUri) {
         this.id = id;
         this.name = name;

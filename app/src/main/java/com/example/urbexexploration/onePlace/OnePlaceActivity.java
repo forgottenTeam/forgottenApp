@@ -16,6 +16,9 @@ import com.example.urbexexploration.R;
 import com.example.urbexexploration.databinding.ActivityOnePlaceBinding;
 import com.example.urbexexploration.places.OnPlaceClickListener;
 
+/**
+ * Klasa widoku pojedynczego miejsca.
+ */
 public class OnePlaceActivity extends AppCompatActivity {
     private ActivityOnePlaceBinding binding;
     private OnePlaceViewModel onePlaceViewModel;
@@ -71,6 +74,10 @@ public class OnePlaceActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Wyświetlanie zdjęcia na cały ekran
+     * @param imageUri ścieżka dostępu do obrazka, który ma zostać wyświetlony na cały ekran
+     */
     public void onImageClickedExplorer(Uri imageUri) {
         Intent fullScreenIntent = new Intent(this, FullScreenImageActivity.class);
         fullScreenIntent.setData(imageUri);

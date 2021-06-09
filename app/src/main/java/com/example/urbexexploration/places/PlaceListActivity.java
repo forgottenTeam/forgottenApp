@@ -15,6 +15,9 @@ import com.example.urbexexploration.addPlace.AddPlaceActivity;
 import com.example.urbexexploration.databinding.ActivityPlaceListBinding;
 import com.example.urbexexploration.onePlace.OnePlaceActivity;
 
+/**
+ * Klasa widoku listy miejsc, wyświetlanych jako "cardViews"
+ */
 public class PlaceListActivity extends AppCompatActivity {
     private RecycleAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -77,6 +80,9 @@ public class PlaceListActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Tworzenie recyclerView ?
+     */
     public void createRecyclerView() {
         binding.placeListRecyclerView.setHasFixedSize(true);
 

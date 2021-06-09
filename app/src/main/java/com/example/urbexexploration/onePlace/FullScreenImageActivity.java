@@ -12,6 +12,9 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.urbexexploration.R;
 import com.example.urbexexploration.databinding.ActivityFullScreenImageBinding;
 
+/**
+ * Klasa, służąca do wyświetlenia obrazka na cały ekran (po kliknięciu na zdjęcie przez użytkownika)
+ */
 public class FullScreenImageActivity extends AppCompatActivity {
 private ActivityFullScreenImageBinding binding;
 

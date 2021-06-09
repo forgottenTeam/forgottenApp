@@ -11,6 +11,9 @@ import com.example.urbexexploration.R;
 import com.example.urbexexploration.data.Place;
 import com.example.urbexexploration.databinding.RecyclerCardBinding;
 
+/**
+ * Klasa umożliwiająca dostęp do listy obiektów wyświetlanych jako "cardView" bez konieczności wyszukiwania.
+ */
 public class ItemViewHolder extends RecyclerView.ViewHolder {
     private RecyclerCardBinding binding;
     private OnPlaceClickListener placeListener;
@@ -21,6 +24,10 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
         this.placeListener = placeListener;
     }
 
+    /**
+     * Wczytywanie obiektu na liście miejsc, zawierającego miniaturkę zdjęcia, nazwę miejsca, kategorię oraz województwo.
+     * @param place obiekt klasy {@link Place}
+     */
     public void bind(Place place) {
         Glide.with(binding.getRoot().getContext())
                 .load(place.getPhotoUri())
@@ -29,7 +36,6 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
                 .placeholder(R.drawable.loading_photo)
                 .centerCrop()
                 .into(binding.cardImageView);
-       // binding.cardImageView.setImageResource(R.drawable.domy);
         binding.cardCategoryTextView.setText(place.getCategory());
         binding.cardLocalisationTextView.setText(place.getProvince());
         binding.cardNameTextView.setText(place.getName());

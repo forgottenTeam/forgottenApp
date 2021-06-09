@@ -13,6 +13,9 @@ import okhttp3.RequestBody;
 import okio.BufferedSink;
 import okio.Okio;
 
+/**
+ * tu nie zabardzo wiemy co wpisac
+ */
 public class UriRequestBody extends RequestBody{
         private final ContentResolver contentResolver;
         private final Uri uri;

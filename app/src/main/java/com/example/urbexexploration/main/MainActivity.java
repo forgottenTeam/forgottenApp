@@ -16,6 +16,9 @@ import com.example.urbexexploration.about.AboutActivity;
 import com.example.urbexexploration.search.SearchActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ * Klasa widoku głównego aplikacji.
+ */
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
 
@@ -38,22 +41,35 @@ public class MainActivity extends AppCompatActivity {
         setupBottomNavigationView();
     }
 
+    /**
+     * Przejście do widoku "About" , zawierającego ogólne informacje na temat urbex.
+     */
     public void goToAboutActivity() {
         Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Przejście do widoku listy obiektów z wybranej kategorii
+     * @param category wybrana kategoria
+     */
     public void goToPlaceActivity(String category) {
         Intent intent = new Intent(this, PlaceListActivity.class);
         intent.putExtra("EXTRA_CATEGORY", category);
         startActivity(intent);
     }
 
+    /**
+     * Przejście do widoku, w którym użytkownik może wyszukać listę miejsc z wybranego województwa
+     */
     public void goToSearchActivity() {
         Intent intent = new Intent(this, SearchActivity.class);
         startActivity(intent);
     }
 
+    /**
+     *
+     */
     private void setupBottomNavigationView() {
         binding.bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {

@@ -20,6 +20,9 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Query;
 
+/**
+ * Interfejs zapytań do API, oparty na bibliotece Retrofit, w którym zdefiniowane zostały metody HTTP (GET, POST).
+ */
 public interface ForgottenService {
     @GET("/places/all")
     Call<List<Place>> getPlaces();

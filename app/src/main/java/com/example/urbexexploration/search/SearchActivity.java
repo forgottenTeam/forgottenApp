@@ -14,6 +14,9 @@ import com.example.urbexexploration.R;
 import com.example.urbexexploration.databinding.ActivitySearchBinding;
 import com.example.urbexexploration.places.PlaceListActivity;
 
+/**
+ * Klasa widoku search - filtrowanie listy wg wybranego województwa
+ */
 public class SearchActivity extends AppCompatActivity {
     private ScaleGestureDetector scaleGestureDetector;
     private float mScaleFactor = 1.0f;
@@ -44,6 +47,9 @@ public class SearchActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Skalowanie obrazka mapy Polski za pomocą gestu
+     */
     private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
         @Override
         public boolean onScale(ScaleGestureDetector scaleGestureDetector) {
@@ -55,6 +61,10 @@ public class SearchActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Przejście do widoku listy miejsc, przefiltrowanych wg wybranego województwa
+     * @param province wybrane przez użytkowanika województwo, wg którego zostanie przefiltrowana lista
+     */
     public void goToPlaceActivityProvince(String province) {
         Intent intent = new Intent(this, PlaceListActivity.class);
         intent.putExtra("EXTRA_PROVINCE", province);

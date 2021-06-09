@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.urbexexploration.R;
 import com.example.urbexexploration.databinding.ActivityAboutBinding;
 
+/**
+ * Klasa głównego widoku "About" , zawierającego ogólne informacje na temat urbex.
+ */
 public class AboutActivity extends AppCompatActivity {
     private ActivityAboutBinding binding;
 
@@ -35,6 +38,9 @@ public class AboutActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Przejście do widoku, zawieraącego odnośniki do stron internetowych powiązanych z tematyką urbex.
+     */
     public void goToLinksAboutActivity(View view) {
         Intent intent = new Intent(this, LinksAboutActivity.class);
         startActivity(intent);
