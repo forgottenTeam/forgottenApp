@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Przejście do widoku "About" , zawierającego ogólne informacje na temat urbex.
+     * Przejście do widoku "About", zawierającego ogólne informacje na temat urbex.
      */
     public void goToAboutActivity() {
         Intent intent = new Intent(this, AboutActivity.class);
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Inicjalizacja dolnego menu aplikacji w widoku głównym
      */
     private void setupBottomNavigationView() {
         binding.bottomNavigation.setOnNavigationItemSelectedListener(item -> {

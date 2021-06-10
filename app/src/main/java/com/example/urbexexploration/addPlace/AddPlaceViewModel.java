@@ -8,7 +8,7 @@ import com.example.urbexexploration.data.PlacesRepository;
 import com.example.urbexexploration.upload.UriRequestBody;
 
 /**
- * Klasa
+ * Klasa reprezentująca logikę biznesową ekranu dodawania nowego miejsca
  */
 public class AddPlaceViewModel extends ViewModel {
     private PlacesRepository repository;
@@ -20,7 +20,7 @@ public class AddPlaceViewModel extends ViewModel {
     }
 
     /**
-     * Dodawanie nowego miejsca do repozytorium
+     * Uruchamianie dodawania obrazka po stronie repozytorium
      * @param uri ścieżka dostępu do obrazka
      * @param name nazwa pliku obrazka
      * @param place obiekt klasy {@link Place}
@@ -38,8 +38,8 @@ public class AddPlaceViewModel extends ViewModel {
     }
 
     /**
-     *
-     * @return
+     * Zwracanie obserwowalnego rezultatu dodawania miejsca
+     * @return obserwowalny rezultat dodawania miejsca
      */
     public LiveData<AddPlaceResult> getAddPlaceResult () {
         return repository.getUploadResultLiveData();

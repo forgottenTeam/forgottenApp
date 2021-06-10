@@ -14,7 +14,7 @@ import okio.BufferedSink;
 import okio.Okio;
 
 /**
- * tu nie zabardzo wiemy co wpisac
+ * Klasa używana przez klienta HTTP służąca do zapisywania treści pliku do zapytania HTTP na podstawie URI pliku i przy użyciu ContentResolver.
  */
 public class UriRequestBody extends RequestBody{
         private final ContentResolver contentResolver;
@@ -26,7 +26,11 @@ public class UriRequestBody extends RequestBody{
             this.uri = uri;
         }
 
-        @Nullable
+    /**
+     * Zwracanie rodzaju pliku.
+     * @return rodzaj pliku
+     */
+    @Nullable
         @Override
         public MediaType contentType() {
            return MediaType.Companion.parse(contentResolver.getType(uri));
@@ -37,7 +41,12 @@ public class UriRequestBody extends RequestBody{
             return -1;
         }
 
-        @Override
+    /**
+     * Czytanie obrazka na podstawie URI i zapisywanie za pomocą pojedyńczych bajtów
+     * @param sink obiekt, do którego zapisujemy pojedyńcze bajty obrazka
+     * @throws IOException
+     */
+    @Override
         public void writeTo(@NonNull BufferedSink sink) throws IOException {
             sink.writeAll(Okio.source(contentResolver.openInputStream(uri)));
         }

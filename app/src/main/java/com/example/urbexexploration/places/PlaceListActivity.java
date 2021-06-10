@@ -81,7 +81,7 @@ public class PlaceListActivity extends AppCompatActivity {
     }
 
     /**
-     * Tworzenie recyclerView ?
+     * Tworzenie recyclerView - inicjalizacja widoku listy będącej kontenerem dla {@link ItemViewHolder}
      */
     public void createRecyclerView() {
         binding.placeListRecyclerView.setHasFixedSize(true);

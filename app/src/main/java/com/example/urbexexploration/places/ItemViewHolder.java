@@ -12,7 +12,7 @@ import com.example.urbexexploration.data.Place;
 import com.example.urbexexploration.databinding.RecyclerCardBinding;
 
 /**
- * Klasa umożliwiająca dostęp do listy obiektów wyświetlanych jako "cardView" bez konieczności wyszukiwania.
+ * Klasa widoku pojedynczego miejsca w liście wszystkich miejsc.
  */
 public class ItemViewHolder extends RecyclerView.ViewHolder {
     private RecyclerCardBinding binding;
@@ -25,7 +25,7 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
     }
 
     /**
-     * Wczytywanie obiektu na liście miejsc, zawierającego miniaturkę zdjęcia, nazwę miejsca, kategorię oraz województwo.
+     * Przypisanie wartości miejsca dla danego elementu z listy.
      * @param place obiekt klasy {@link Place}
      */
     public void bind(Place place) {

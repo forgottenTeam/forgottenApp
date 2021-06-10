@@ -12,6 +12,9 @@ import com.example.urbexexploration.databinding.RecyclerCardBinding;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Adapter danych do listy miejsc, odpowiedzialny za dostarczenie elementów do RecyclerView.
+ */
 public class RecycleAdapter extends RecyclerView.Adapter<ItemViewHolder> {
     private List<Place> mRecyclerList;
     private OnPlaceClickListener placeListener;

@@ -114,7 +114,7 @@ public class AddPlaceActivity extends AppCompatActivity {
     }
 
     /**
-     * Wczytywanie na ekran miniaturki wybranego przez użytkownika obrazka.
+     * Wczytywanie na ekran miniaturki wybranego przez użytkownika obrazka po otrzymaniu URI pliku z galerii.
      * @param requestCode
      * @param resultCode
      * @param data
@@ -133,7 +133,7 @@ public class AddPlaceActivity extends AppCompatActivity {
     }
 
     /**
-     * Sprawdzenie czy wszystkie pola zostały uzupełnione. Funkcja zwraca wartość true jeśli przynajmniej jedno z pól jest puste.
+     * Sprawdzenie czy wszystkie pola nie zostały uzupełnione. Funkcja zwraca wartość true jeśli przynajmniej jedno z pól jest puste.
      */
     private Boolean isNotValid() {
         return TextUtils.isEmpty(binding.categoryTextView.getText()) ||
