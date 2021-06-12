@@ -1,14 +1,13 @@
 package com.example.urbexexploration.about;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-import com.example.urbexexploration.R;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.urbexexploration.databinding.ActivityLinksAboutBinding;
 
 /**
- * Klasa widoku, zawieraącego odnośniki do stron internetowych powiązanych z tematyką urbex.
+ * Klasa widoku, zawierającego odnośniki do stron internetowych powiązanych z tematyką urbex.
  */
 public class LinksAboutActivity extends AppCompatActivity {
     private ActivityLinksAboutBinding binding;

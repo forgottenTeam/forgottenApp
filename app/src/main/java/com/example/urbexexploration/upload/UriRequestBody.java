@@ -42,7 +42,7 @@ public class UriRequestBody extends RequestBody{
         }
 
     /**
-     * Czytanie obrazka na podstawie URI i zapisywanie za pomocą pojedyńczych bajtów
+     * Czytanie obrazka na podstawie URI i zapisywanie jego treści za pomocą strumienia bajtów.
      * @param sink obiekt, do którego zapisujemy pojedyńcze bajty obrazka
      * @throws IOException
      */

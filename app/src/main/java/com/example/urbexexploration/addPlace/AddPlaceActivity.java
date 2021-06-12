@@ -1,10 +1,5 @@
 package com.example.urbexexploration.addPlace;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -14,6 +9,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -115,9 +115,9 @@ public class AddPlaceActivity extends AppCompatActivity {
 
     /**
      * Wczytywanie na ekran miniaturki wybranego przez użytkownika obrazka po otrzymaniu URI pliku z galerii.
-     * @param requestCode
-     * @param resultCode
-     * @param data
+     * @param requestCode unikalny kod aplikacji do wyboru obrazka
+     * @param resultCode kod rezultatu wyboru obrazka
+     * @param data obiekt Intent zawierający uri obrazka
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

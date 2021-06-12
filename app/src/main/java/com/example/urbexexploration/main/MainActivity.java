@@ -1,20 +1,15 @@
 package com.example.urbexexploration.main;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.urbexexploration.R;
-import com.example.urbexexploration.data.Place;
+import com.example.urbexexploration.about.AboutActivity;
 import com.example.urbexexploration.databinding.ActivityMainBinding;
 import com.example.urbexexploration.places.PlaceListActivity;
-import com.example.urbexexploration.about.AboutActivity;
 import com.example.urbexexploration.search.SearchActivity;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
  * Klasa widoku głównego aplikacji.

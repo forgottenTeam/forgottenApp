@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.urbexexploration.addPlace.AddPlaceResult;
 import com.example.urbexexploration.network.ForgottenService;
-import com.example.urbexexploration.places.OnPlaceClickListener;
 
 import java.util.ArrayList;
 import java.util.List;

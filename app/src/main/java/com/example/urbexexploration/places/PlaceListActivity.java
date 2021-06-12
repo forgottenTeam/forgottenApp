@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -49,6 +50,7 @@ public class PlaceListActivity extends AppCompatActivity {
 
             if (category != null) {
                 placeListViewModel.filterListCategory(category);
+                Toast.makeText(PlaceListActivity.this, "Kategoria "+category, Toast.LENGTH_SHORT).show();
             } else if
             (province != null) {
                 placeListViewModel.filterListProvince(province);
