@@ -23,6 +23,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory;
 
 /**
   * Repozytorium do komunikacji sieciowej aplikacji z serwerem
+ * @author Jędrzej Mańczak
  */
 public class PlacesRepository {
     /** Bazowy adres serwera */

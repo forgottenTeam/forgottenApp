@@ -18,6 +18,7 @@ import com.example.urbexexploration.onePlace.OnePlaceActivity;
 
 /**
  * Klasa widoku listy miejsc, wyświetlanych jako "cardViews"
+ * @author Paulina Bogusz
  */
 public class PlaceListActivity extends AppCompatActivity {
     private RecycleAdapter mAdapter;

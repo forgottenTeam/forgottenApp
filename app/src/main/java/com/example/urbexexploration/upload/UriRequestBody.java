@@ -15,6 +15,7 @@ import okio.Okio;
 
 /**
  * Klasa używana przez klienta HTTP służąca do zapisywania treści pliku do zapytania HTTP na podstawie URI pliku i przy użyciu ContentResolver.
+ * @author Jędrzej Mańczak
  */
 public class UriRequestBody extends RequestBody{
         private final ContentResolver contentResolver;

@@ -15,6 +15,7 @@ import com.example.urbexexploration.places.PlaceListActivity;
 
 /**
  * Klasa widoku search - filtrowanie listy wg wybranego województwa
+ * @author Paulina Bogusz
  */
 public class SearchActivity extends AppCompatActivity {
     private ScaleGestureDetector scaleGestureDetector;

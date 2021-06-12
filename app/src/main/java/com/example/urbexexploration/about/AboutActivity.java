@@ -11,6 +11,7 @@ import com.example.urbexexploration.databinding.ActivityAboutBinding;
 
 /**
  * Klasa głównego widoku "About", zawierającego ogólne informacje na temat urbex.
+ * @author Paulina Bogusz
  */
 public class AboutActivity extends AppCompatActivity {
     private ActivityAboutBinding binding;

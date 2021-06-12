@@ -9,6 +9,7 @@ import com.example.urbexexploration.upload.UriRequestBody;
 
 /**
  * Klasa reprezentująca logikę biznesową ekranu dodawania nowego miejsca
+ * @author Paulina Bogusz
  */
 public class AddPlaceViewModel extends ViewModel {
     private PlacesRepository repository;

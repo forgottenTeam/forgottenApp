@@ -12,6 +12,7 @@ import com.example.urbexexploration.databinding.ActivityFullScreenImageBinding;
 
 /**
  * Klasa, służąca do wyświetlenia obrazka na cały ekran (po kliknięciu na zdjęcie przez użytkownika)
+ * @author Paulina Bogusz
  */
 public class FullScreenImageActivity extends AppCompatActivity {
 private ActivityFullScreenImageBinding binding;

@@ -8,6 +8,7 @@ import com.example.urbexexploration.databinding.ActivityLinksAboutBinding;
 
 /**
  * Klasa widoku, zawierającego odnośniki do stron internetowych powiązanych z tematyką urbex.
+ * @author Paulina Bogusz
  */
 public class LinksAboutActivity extends AppCompatActivity {
     private ActivityLinksAboutBinding binding;

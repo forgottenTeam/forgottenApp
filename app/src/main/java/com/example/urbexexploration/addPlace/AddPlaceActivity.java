@@ -25,6 +25,7 @@ import com.example.urbexexploration.upload.UriRequestBody;
 
 /**
  * Klasa widoku, w którym użytkownik dodaje nowe miejsce do bazy, wypełniając konieczne pola.
+ * @author Paulina Bogusz
  */
 public class AddPlaceActivity extends AppCompatActivity {
 

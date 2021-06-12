@@ -13,6 +13,7 @@ import com.example.urbexexploration.search.SearchActivity;
 
 /**
  * Klasa widoku głównego aplikacji.
+ * @author Paulina Bogusz
  */
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;

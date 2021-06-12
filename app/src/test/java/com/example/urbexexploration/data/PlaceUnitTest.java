@@ -8,6 +8,7 @@ import static org.junit.Assert.assertNull;
 
 /**
  * Testy dla klasy Place
+ * @author Paulina Bogusz
  */
 public class PlaceUnitTest {
 

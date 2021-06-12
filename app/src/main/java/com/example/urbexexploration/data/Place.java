@@ -2,6 +2,7 @@ package com.example.urbexexploration.data;
 
 /**
  * Klasa opisująca pojedyncze miejsce (obiekt) za pomocą parametrów
+ * @author Jędrzej Mańczak
  */
 public class Place {
     public static final String BASE_IMAGE_URL = PlacesRepository.BASE_URL + PlacesRepository.IMAGE_PATH;

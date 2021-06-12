@@ -13,6 +13,7 @@ import com.example.urbexexploration.databinding.RecyclerCardBinding;
 
 /**
  * Klasa widoku pojedynczego miejsca w liście wszystkich miejsc.
+ * @author Paulina Bogusz
  */
 public class ItemViewHolder extends RecyclerView.ViewHolder {
     private RecyclerCardBinding binding;

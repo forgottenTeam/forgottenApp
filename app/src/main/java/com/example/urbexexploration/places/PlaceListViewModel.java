@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * Klasa ViewModel dla widoku PlaceList
+ * @author Paulina Bogusz
  */
 public class PlaceListViewModel extends ViewModel {
     private PlacesRepository repository;

@@ -8,6 +8,7 @@ import com.example.urbexexploration.data.PlacesRepository;
 
 /**
  * Klasa ViewModel dla widoku OnePlace
+ * @author Paulina Bogusz
  */
 public class OnePlaceViewModel extends ViewModel {
     private PlacesRepository repository;

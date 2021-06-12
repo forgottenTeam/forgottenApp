@@ -15,6 +15,7 @@ import com.example.urbexexploration.databinding.ActivityOnePlaceBinding;
 
 /**
  * Klasa widoku pojedynczego miejsca.
+ * @author Paulina Bogusz
  */
 public class OnePlaceActivity extends AppCompatActivity {
     private ActivityOnePlaceBinding binding;

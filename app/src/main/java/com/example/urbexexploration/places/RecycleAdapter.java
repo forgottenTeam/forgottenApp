@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * Adapter danych do listy miejsc, odpowiedzialny za dostarczenie elementów do RecyclerView.
+ * @author Paulina Bogusz
  */
 public class RecycleAdapter extends RecyclerView.Adapter<ItemViewHolder> {
     private List<Place> mRecyclerList;

@@ -2,6 +2,7 @@ package com.example.urbexexploration.addPlace;
 
 /**
  * Klasa określająca czy wysłanie nowego miejsca do serwera zakończyło się sukcesem.
+ * @author Paulina Bogusz
  */
 public class AddPlaceResult {
 
