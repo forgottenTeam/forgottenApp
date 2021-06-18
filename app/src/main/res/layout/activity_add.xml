@@ -127,7 +127,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/add_latitude_inputText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -155,7 +156,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/add_longitude_inputText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 

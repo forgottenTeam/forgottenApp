@@ -27,7 +27,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory;
  */
 public class PlacesRepository {
     /** Bazowy adres serwera */
-    public static final String BASE_URL = "http://192.168.1.40:8080/";
+    public static final String BASE_URL = "http://192.168.1.40:8080/";  //tu wpisujemy adres LocalHost
     /** Relatywna ścieżka do obrazka na serwerze */
     public static final String IMAGE_PATH = "places/image/";
 
@@ -41,8 +41,8 @@ public class PlacesRepository {
     private MutableLiveData<AddPlaceResult> uploadResultLiveData;
 
     /**
-     * Konstruktor repozytorium, który inicjalizuje {@link PlacesRepository#serviceForg,#placesLiveData,#onePlaceLiveData,#uploadResultLiveData}.
-     * Serwis {@link PlacesRepository#serviceForg} jest tworzony przy użyciu klienta HTTP z pełnym logowaniem komunikacji z serwerem.
+     * Konstruktor repozytorium, który inicjalizuje {@link PlacesRepository #serviceForg,#placesLiveData,#onePlaceLiveData,#uploadResultLiveData}.
+     * Serwis {@link PlacesRepository #serviceForg} jest tworzony przy użyciu klienta HTTP z pełnym logowaniem komunikacji z serwerem.
      * Odpowiedzi z serwera są serializowane przy użyciu konwertera Moshi.
      */
     public PlacesRepository() {
